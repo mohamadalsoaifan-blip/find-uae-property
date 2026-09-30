@@ -414,5 +414,35 @@
     talk(null, null);
   }
 
-  show(1);
+  // ------------------------------------------------------------------ quick starts (one page for every kind of buyer)
+  function firstOpenStep() {
+    for (var i = 1; i < total; i++) if (!stepValid(i)) return i;
+    return total;
+  }
+  function applyQuick(slug) {
+    var pre = T.quick && T.quick[slug];
+    if (!pre) return false;
+    Object.keys(pre).forEach(function (name) {
+      var el = form.querySelector('input[type=radio][name="' + name + '"][value="' + pre[name] + '"]');
+      if (el) el.checked = true;
+    });
+    if (!utm.content) utm.content = slug; // which quick start the buyer used (shown in attribution)
+    save();
+    return true;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-for]"), function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      track("CTA_CLICK");
+      if (applyQuick(a.getAttribute("data-for"))) {
+        startOnce();
+        show(firstOpenStep());
+        document.getElementById("find").scrollIntoView({ block: "start" });
+        focusStep();
+      }
+    });
+  });
+  var forSlug = params.get("for");
+  if (forSlug && /^[a-z0-9-]{3,40}$/.test(forSlug) && applyQuick(forSlug)) show(firstOpenStep());
+  else show(1);
 })();
