@@ -2,6 +2,13 @@
 // No cookies, no third-party scripts, no fingerprinting. Storage is used only inside try/catch and is optional.
 (function () {
   "use strict";
+  // Anti-clickjacking: the static host cannot send frame-ancestors, so a framed copy of the page never activates
+  // the form (without this script the form cannot submit at all: CSP form-action 'none', no action attribute).
+  try {
+    if (window.top !== window.self) return;
+  } catch (_) {
+    return;
+  }
   var cfg = window.PLH_CONFIG || {};
   var T = JSON.parse(document.getElementById("t").textContent);
   var form = document.getElementById("buyer-form");
@@ -288,7 +295,7 @@
         }
         var code = r.body && r.body.error;
         showError(r.status === 429 ? "too_many_requests" : T.errors[code] ? code : "generic");
-        if (r.status >= 500) offerWhatsapp("wa-fallback", d);
+        if (r.status >= 500 || r.status === 429) offerWhatsapp("wa-fallback", d); // never leave a real buyer without a way to reach us
       })
       .catch(function () {
         showError("network");
