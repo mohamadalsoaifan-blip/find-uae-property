@@ -409,3 +409,63 @@ summary {
   text-decoration: none;
   font-size: 15px;
 }
+.concierge {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.concierge h3 {
+  font-size: 17px;
+  margin: 0 0 6px;
+}
+.concierge .note {
+  text-align: start;
+}
+.cc-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+.cc-msg {
+  max-width: 88%;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background: var(--soft);
+  align-self: flex-start;
+  white-space: pre-wrap;
+}
+.cc-msg.me {
+  background: var(--accent);
+  color: var(--accent-ink);
+  align-self: flex-end;
+}
+.cc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.cc-chips button {
+  min-height: 40px;
+  padding: 8px 14px;
+  background: var(--card);
+  color: var(--ink);
+  border: 1.5px solid var(--accent);
+  font-weight: 600;
+}
+.cc-chips label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+}
+.cc-form {
+  display: flex;
+  gap: 8px;
+}
+.cc-form input {
+  flex: 1;
+}

@@ -135,6 +135,16 @@
     <p class="ref">رقم المرجع: <b id="ref"></b></p>
     <ul><li>لن نشارك أي شيء مع أي مستشار إلا إذا وافقت على خانة المشاركة.</li><li>لإيقاف التواصل أو حذف بياناتك في أي وقت، ردّ بكلمة «STOP» أو «توقف».</li></ul>
     <p class="wa-row" hidden><a id="wa-done" class="wa" rel="noopener" target="_blank">أكمل عبر واتساب</a></p>
+    <div id="concierge" class="concierge" hidden>
+      <h3>ساعدنا لنجد لك الأنسب (اختياري · دقيقة تقريبًا)</h3>
+      <p class="note">مساعد آلي يسألك بضعة أسئلة فقط. لا يقترح عقارات ولا أسعارًا أبدًا — هذه تأتي فقط من مستشار مرخّص.</p>
+      <div id="cc-log" class="cc-log" aria-live="polite"></div>
+      <div id="cc-chips" class="cc-chips"></div>
+      <div id="cc-form" class="cc-form">
+        <input id="cc-input" maxlength="300" autocomplete="off" placeholder="اكتب إجابتك…" aria-label="اكتب إجابتك…">
+        <button type="button" id="cc-send">إرسال</button>
+      </div>
+    </div>
   </div>
 </section>
 <section class="card">
@@ -163,7 +173,7 @@
   <p>خدمة تعريف فقط — لسنا وسيطًا عقاريًا. لا نعد بأسعار أو توفر أو عوائد. تحقّق دائمًا من ترخيص المستشار.</p>
   <p><a href="../ar/privacy/">الخصوصية</a></p>
 </footer>
-<script type="application/json" id="t">{"lang":"ar","stepOf":"الخطوة {n} من {total}","sending":"جارٍ الإرسال…","submit":"أرسل طلبي","errors":{"missing_answers":"يرجى الإجابة عن جميع الأسئلة.","name_required":"يرجى كتابة اسمك.","invalid_email":"البريد الإلكتروني غير صحيح.","invalid_phone":"يرجى كتابة رقم الهاتف مع رمز الدولة، مثال: ‎+971 50 123 4567.","contact_required":"يرجى كتابة بريد إلكتروني أو رقم هاتف.","contact_consent_required":"يرجى تحديد خانة الموافقة على التواصل معك.","sensitive_data_not_allowed":"يرجى حذف أي أرقام بنكية أو بطاقات أو هوية — لا نحتاجها أبدًا.","too_many_requests":"محاولات كثيرة من هذا الاتصال. يرجى المحاولة لاحقًا.","network":"تعذّر إرسال طلبك. إجاباتك محفوظة — يرجى المحاولة مرة أخرى.","generic":"حدث خطأ. إجاباتك محفوظة — يرجى المحاولة مرة أخرى."},"whatsappText":"مرحبًا، أبحث عن عقار في الإمارات:","labels":{"location":{"dubai":"دبي","abu_dhabi":"أبوظبي","other_uae":"إمارة أخرى"},"propertyType":{"apartment":"شقة","villa":"فيلا","townhouse":"تاون هاوس","commercial":"تجاري","not_sure":"لم أحدد بعد"},"budget":{"lt1m":"أقل من مليون درهم","1to2m":"1 – 2 مليون درهم","2to5m":"2 – 5 مليون درهم","5to10m":"5 – 10 مليون درهم","10mplus":"أكثر من 10 ملايين درهم","not_sure":"لم أحدد بعد"},"purpose":{"residence":"سكن لي ولعائلتي","investment":"استثمار","relocation":"الانتقال للعيش في الإمارات","other":"غرض آخر"},"timeline":{"immediately":"فورًا","lt30d":"خلال 30 يومًا","1to3m":"خلال 1 – 3 أشهر","3to6m":"خلال 3 – 6 أشهر","exploring":"أستكشف فقط"},"payment":{"cash":"نقدًا","mortgage":"تمويل عقاري","undecided":"لم أقرر بعد"}}}</script>
+<script type="application/json" id="t">{"lang":"ar","stepOf":"الخطوة {n} من {total}","sending":"جارٍ الإرسال…","submit":"أرسل طلبي","errors":{"missing_answers":"يرجى الإجابة عن جميع الأسئلة.","name_required":"يرجى كتابة اسمك.","invalid_email":"البريد الإلكتروني غير صحيح.","invalid_phone":"يرجى كتابة رقم الهاتف مع رمز الدولة، مثال: ‎+971 50 123 4567.","contact_required":"يرجى كتابة بريد إلكتروني أو رقم هاتف.","contact_consent_required":"يرجى تحديد خانة الموافقة على التواصل معك.","sensitive_data_not_allowed":"يرجى حذف أي أرقام بنكية أو بطاقات أو هوية — لا نحتاجها أبدًا.","too_many_requests":"محاولات كثيرة من هذا الاتصال. يرجى المحاولة لاحقًا.","network":"تعذّر إرسال طلبك. إجاباتك محفوظة — يرجى المحاولة مرة أخرى.","generic":"حدث خطأ. إجاباتك محفوظة — يرجى المحاولة مرة أخرى."},"whatsappText":"مرحبًا، أبحث عن عقار في الإمارات:","concierge":{"cont":"متابعة","error":"المساعد غير متاح الآن — طلبك محفوظ بالفعل."},"labels":{"location":{"dubai":"دبي","abu_dhabi":"أبوظبي","other_uae":"إمارة أخرى"},"propertyType":{"apartment":"شقة","villa":"فيلا","townhouse":"تاون هاوس","commercial":"تجاري","not_sure":"لم أحدد بعد"},"budget":{"lt1m":"أقل من مليون درهم","1to2m":"1 – 2 مليون درهم","2to5m":"2 – 5 مليون درهم","5to10m":"5 – 10 مليون درهم","10mplus":"أكثر من 10 ملايين درهم","not_sure":"لم أحدد بعد"},"purpose":{"residence":"سكن لي ولعائلتي","investment":"استثمار","relocation":"الانتقال للعيش في الإمارات","other":"غرض آخر"},"timeline":{"immediately":"فورًا","lt30d":"خلال 30 يومًا","1to3m":"خلال 1 – 3 أشهر","3to6m":"خلال 3 – 6 أشهر","exploring":"أستكشف فقط"},"payment":{"cash":"نقدًا","mortgage":"تمويل عقاري","undecided":"لم أقرر بعد"}}}</script>
 <script src="../config.js"></script>
 <script src="../app.js"></script>
 </body>

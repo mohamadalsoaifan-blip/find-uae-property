@@ -282,6 +282,7 @@
           document.getElementById("ref").textContent = String(r.body.reference || "—").slice(0, 12);
           document.getElementById("done").hidden = false;
           offerWhatsapp("wa-done", d);
+          if (r.body.chat) startConcierge(r.body.chat);
           document.getElementById("done").scrollIntoView({ block: "start" });
           return;
         }
@@ -299,6 +300,119 @@
         submit.textContent = T.submit;
       });
   });
+
+  // ------------------------------------------------------------------ optional concierge (fixed questions; text only via textContent)
+  function startConcierge(chat) {
+    var box = document.getElementById("concierge");
+    var log = document.getElementById("cc-log");
+    var chipsBox = document.getElementById("cc-chips");
+    var input = document.getElementById("cc-input");
+    var send = document.getElementById("cc-send");
+    var formRow = document.getElementById("cc-form");
+    if (!box || !chat || !chat.id || !chat.token) return;
+    var busy = false;
+    function bubble(text, me) {
+      var el = document.createElement("div");
+      el.className = "cc-msg" + (me ? " me" : "");
+      el.textContent = text;
+      log.appendChild(el);
+    }
+    function render(r) {
+      (r.messages || []).forEach(function (m) {
+        bubble(String(m));
+      });
+      chipsBox.textContent = "";
+      var chips = r.chips || [];
+      if (r.multi) {
+        chips.forEach(function (c) {
+          var l = document.createElement("label");
+          var cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.value = c.value;
+          l.appendChild(cb);
+          l.appendChild(document.createTextNode(c.label));
+          chipsBox.appendChild(l);
+        });
+        var go = document.createElement("button");
+        go.type = "button";
+        go.textContent = T.concierge.cont;
+        go.addEventListener("click", function () {
+          var picked = Array.prototype.slice.call(chipsBox.querySelectorAll("input:checked")).map(function (x) {
+            return x.value;
+          });
+          var labels = Array.prototype.slice.call(chipsBox.querySelectorAll("input:checked")).map(function (x) {
+            return x.parentNode.textContent;
+          });
+          talk(labels.join(", ") || "—", { field: "mustHaves", value: picked.join(",") });
+        });
+        chipsBox.appendChild(go);
+      } else {
+        chips.forEach(function (c) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = c.label;
+          b.addEventListener("click", function () {
+            talk(c.label, { field: c.field, value: c.value });
+          });
+          chipsBox.appendChild(b);
+        });
+      }
+      if (r.done) {
+        formRow.hidden = true;
+        chipsBox.textContent = "";
+      }
+    }
+    function post(message, choice, n) {
+      return fetch(cfg.api + (cfg.api.indexOf("?") < 0 ? "?" : "&") + "chat=1", {
+        method: "POST",
+        headers: { "content-type": "text/plain" },
+        body: JSON.stringify({ id: chat.id, token: chat.token, lang: T.lang, message: message, choice: choice || null }),
+      }).then(function (res) {
+        // the request may still be processing for a moment: wait and retry a few times
+        if (res.status === 409 && n < 4) {
+          return new Promise(function (ok) {
+            setTimeout(ok, 1500);
+          }).then(function () {
+            return post(message, choice, n + 1);
+          });
+        }
+        if (!res.ok) throw new Error(String(res.status));
+        return res.json();
+      });
+    }
+    function talk(shown, choice) {
+      if (busy) return;
+      var message = choice ? "" : input.value.trim().slice(0, 300);
+      if (shown) bubble(shown, true);
+      if (!choice && !message && shown !== null) return;
+      busy = true;
+      send.disabled = true;
+      input.value = "";
+      post(message, choice, 0)
+        .then(render)
+        .catch(function () {
+          bubble(T.concierge.error);
+          formRow.hidden = true;
+          chipsBox.textContent = "";
+        })
+        .then(function () {
+          busy = false;
+          send.disabled = false;
+        });
+    }
+    send.addEventListener("click", function () {
+      var v = input.value.trim();
+      if (v) talk(v, null);
+    });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        send.click();
+      }
+    });
+    box.hidden = false;
+    talk(null, null);
+  }
 
   show(1);
 })();
