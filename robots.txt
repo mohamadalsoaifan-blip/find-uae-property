@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mohamadalsoaifan-blip.github.io/find-uae-property/sitemap.xml
