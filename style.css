@@ -368,3 +368,44 @@ summary {
     transition: none;
   }
 }
+.check {
+  padding-inline-start: 0;
+  list-style: none;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.check li {
+  position: relative;
+  padding-inline-start: 26px;
+}
+.check li::before {
+  content: "?";
+  position: absolute;
+  inset-inline-start: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+  line-height: 18px;
+}
+.popular ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.popular a {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+}
