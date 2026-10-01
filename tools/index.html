@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://piqprvgzgczrvcjvjrcv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>UAE property buyer calculators — upfront costs, budget, rental yield</title>
+<meta name="description" content="Free calculators for buying property in Dubai and the UAE: cash needed upfront (incl. the 4% DLD fee), what your cash can buy with a mortgage, and rental yield from a real lease. Sources shown, no sign-up.">
+<link rel="canonical" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/">
+<link rel="alternate" hreflang="en" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/">
+<link rel="alternate" hreflang="ar" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/tools/">
+<link rel="alternate" hreflang="x-default" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UAE property buyer calculators — upfront costs, budget, rental yield">
+<meta property="og:description" content="Free calculators for buying property in Dubai and the UAE: cash needed upfront (incl. the 4% DLD fee), what your cash can buy with a mortgage, and rental yield from a real lease. Sources shown, no sign-up.">
+<meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/">
+<meta property="og:locale" content="en_AE">
+<meta name="theme-color" content="#0b5cab">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Buyer calculators","description":"Free calculators for buying property in Dubai and the UAE: cash needed upfront (incl. the 4% DLD fee), what your cash can buy with a mortgage, and rental yield from a real lease. Sources shown, no sign-up.","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"en","url":"https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/","offers":{"@type":"Offer","price":"0","priceCurrency":"AED"},"dateModified":"2026-10-01"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Find Your UAE Property","item":"https://mohamadalsoaifan-blip.github.io/find-uae-property/"},{"@type":"ListItem","position":2,"name":"Buyer calculators","item":"https://mohamadalsoaifan-blip.github.io/find-uae-property/tools/"}]}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../">Find Your UAE Property</a>
+  <a class="lang" href="../ar/tools/" hreflang="ar" lang="ar">العربية</a>
+</header>
+<main>
+<nav class="crumbs" aria-label="breadcrumb"><a href="../">Find Your UAE Property</a> › <span>Buyer calculators</span></nav>
+<section class="hero">
+  <h1>Buyer calculators</h1>
+  <p class="lead">Work out the numbers before you talk to anyone. Everything is calculated on your device from what you type; published rules are linked to their official source, and every assumption can be changed.</p>
+  <p class="note">Rules last checked 2026-10-01</p>
+</section>
+<section class="card tool" id="cost" aria-labelledby="cost-h">
+  <h2 id="cost-h">1. How much cash do I need upfront?</h2>
+  <p class="hint">For a price you have in mind.</p>
+  <label class="field"><span>Property price (AED)</span><input id="c-price" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <fieldset class="seg"><legend>How will you pay?</legend>
+    <label><input type="radio" name="c-fin" value="cash" checked><span>Cash</span></label>
+    <label><input type="radio" name="c-fin" value="mortgage"><span>Mortgage</span></label>
+  </fieldset>
+  <div id="c-mortgage" hidden><label class="field"><span>Bank financing (% of price)</span><input id="c-ltv" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">Default = the Central Bank maximum for an expatriate&#39;s first home (80% up to AED 5M, 70% above). Your bank may offer less.</small></label><label class="field"><span>Mortgage registration fee (% of loan)</span><input id="c-mreg" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">Your assumption — ask your bank for the exact amount.</small></label></div>
+  <label class="field"><span>Agency commission (%)</span><input id="c-agency" inputmode="decimal" autocomplete="off" dir="ltr" value="0"><small class="hint">Your assumption — agree it in writing with the agent. Leave 0 if none.</small></label>
+  <label class="field"><span>Other fees you were quoted (AED)</span><input id="c-other" inputmode="decimal" autocomplete="off" dir="ltr" value="0"><small class="hint">e.g. registration trustee, valuation, bank arrangement fee.</small></label>
+  <div class="result" id="c-out" aria-live="polite"><p class="hint">Enter a price to see the breakdown.</p></div>
+</section>
+<section class="card tool" id="afford" aria-labelledby="afford-h">
+  <h2 id="afford-h">2. What price can my cash cover?</h2>
+  <p class="hint">Uses the same fees as above.</p>
+  <label class="field"><span>Cash you can put in (AED)</span><input id="a-cash" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <div class="result" id="a-out" aria-live="polite" data-label="Highest price your cash covers"></div>
+  <label class="field"><span>Interest rate your bank quoted (%)</span><input id="a-rate" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Loan term (years)</span><input id="a-years" inputmode="decimal" autocomplete="off" dir="ltr" value="25"></label>
+  <div class="result" id="a-pay" aria-live="polite" data-label="Estimated monthly payment"></div>
+  <p class="hint">Only shown when you enter your bank&#39;s rate. Fixed-rate periods and fees vary by bank.</p>
+</section>
+<section class="card tool" id="yield" aria-labelledby="yield-h">
+  <h2 id="yield-h">3. What yield does a rent really give?</h2>
+  <p class="hint">Use a rent from an actual signed lease of a similar unit — not an advertised estimate.</p>
+  <label class="field"><span>Purchase price (AED)</span><input id="y-price" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Annual rent (AED)</span><input id="y-rent" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">From a real lease you have seen.</small></label>
+  <label class="field"><span>Annual costs (AED)</span><input id="y-costs" inputmode="decimal" autocomplete="off" dir="ltr" value="0"><small class="hint">Service charges, maintenance, management, insurance, vacancy allowance.</small></label>
+  <div class="result" id="y-out" aria-live="polite" data-gross="Gross yield" data-net="Net yield" data-income="Net income per year"></div>
+</section>
+<section class="card">
+  <h2>Ready to talk to someone?</h2>
+  <p>Take your numbers to one licensed advisor — we introduce you only if you agree.</p>
+  <p><a class="cta" id="tools-cta" href="../#find">Continue with this budget</a></p>
+</section>
+<section class="card">
+  <h2>Sources and limits</h2>
+  <ul class="check">
+    <li><a href="https://dubailand.gov.ae/en/eservices/property-sale-registration/" rel="noopener" target="_blank">4% registration fee: Dubai Land Department</a></li>
+    <li><a href="https://rulebook.centralbank.ae/en/rulebook/article-3-important-ratios" rel="noopener" target="_blank">Maximum financing for expatriates (first home): UAE Central Bank mortgage regulations</a></li>
+    <li>These are estimates from your own inputs, not an offer, valuation or financial advice.</li>
+    <li>Fees change; confirm every amount with the Dubai Land Department, your bank and your advisor before paying anything.</li>
+    <li>Rules differ for UAE nationals, second homes and off-plan purchases, and outside Dubai.</li>
+  </ul>
+</section>
+</main>
+<footer class="foot">
+  <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
+  <p><a href="../privacy/">Privacy</a></p>
+</footer>
+<script type="application/json" id="t">{"lang":"en","money":"AED","out":{"downPayment":"Down payment","dldFee":"DLD registration fee (4%)","agencyFee":"Agency commission","mortgageRegistration":"Mortgage registration","otherFees":"Other fees","total":"Cash needed upfront","loan":"Bank loan"},"outLtv":"with bank financing of","empty":"Enter a price to see the breakdown.","cta":"Continue with this budget"}</script>
+<script src="../config.js"></script>
+<script src="../tools.js"></script>
+<script src="../tools-page.js"></script>
+</body>
+</html>

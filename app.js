@@ -564,7 +564,22 @@
       }
     });
   });
+  // answers carried over from the calculators page (?budget=2to5m&payment=mortgage): only exact option values
+  var carried = false;
+  ["location", "budget", "payment", "propertyType", "purpose", "timeline"].forEach(function (name) {
+    var val = params.get(name);
+    if (!val || !/^[a-z0-9_]{2,20}$/.test(val)) return;
+    var el = form.querySelector('input[type=radio][name="' + name + '"][value="' + val + '"]');
+    if (el) {
+      el.checked = true;
+      carried = true;
+    }
+  });
+  if (carried) {
+    if (!utm.content) utm.content = "tools";
+    save();
+  }
   var forSlug = params.get("for");
   if (forSlug && /^[a-z0-9-]{3,40}$/.test(forSlug) && applyQuick(forSlug)) show(firstOpenStep());
-  else show(1);
+  else show(carried ? firstOpenStep() : 1);
 })();

@@ -594,3 +594,55 @@ summary {
   border: 1.5px solid var(--accent);
   font-size: 16px;
 }
+
+/* buyer calculators */
+.tools-link {
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+.crumbs {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+.tool .field {
+  margin-top: 10px;
+}
+.seg {
+  border: 0;
+  padding: 0;
+  margin: 12px 0 0;
+}
+.seg legend {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.seg label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 8px 14px;
+  margin-inline-end: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.result {
+  margin-top: 14px;
+}
+.res {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.res b {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.res.total {
+  border-bottom: 0;
+  font-size: 18px;
+}
