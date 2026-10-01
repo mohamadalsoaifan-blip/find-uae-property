@@ -482,3 +482,115 @@ summary {
   border-color: var(--accent);
   background: var(--soft);
 }
+
+/* one-sentence intent box (hero) */
+.intent {
+  margin: 0 0 18px;
+  padding: 14px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .06);
+}
+.intent label {
+  display: block;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.intent-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.intent textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px; /* no zoom on iOS */
+  resize: vertical;
+}
+.intent textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.intent .hint {
+  margin: 8px 0 0;
+}
+.intent-out,
+.understood {
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--soft);
+}
+.intent-out p,
+.understood p {
+  margin: 0;
+}
+.understood {
+  margin: 0 0 14px;
+}
+.understood-h {
+  font-weight: 700;
+}
+.brief-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 8px 0;
+}
+.brief-chips li {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 14px;
+}
+.brief {
+  margin: 0 0 16px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 12px;
+}
+.brief h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.brief-h {
+  margin: 10px 0 0;
+  font-weight: 700;
+  font-size: 15px;
+}
+.brief .note {
+  text-align: start;
+}
+@media (max-width: 480px) {
+  .intent-row {
+    flex-direction: column;
+  }
+  .intent-row button {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.cta.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  font-size: 16px;
+}

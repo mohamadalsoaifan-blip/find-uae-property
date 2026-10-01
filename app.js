@@ -77,10 +77,11 @@
   var channelHint = utm.medium ? String(utm.medium).toUpperCase().replace(/[^A-Z_]/g, "").slice(0, 20) || null : null;
 
   // ------------------------------------------------------------------ anonymous funnel events (never block the page)
-  function track(event, step) {
+  function track(event, step, detail) {
     var body = JSON.stringify({
       event: event,
       step: step == null ? null : step,
+      detail: detail || null,
       sessionId: sessionId,
       page: page,
       lang: T.lang,
@@ -156,6 +157,7 @@
     });
     label.textContent = T.stepOf.replace("{n}", current).replace("{total}", total);
     bar.style.width = Math.round((current / total) * 100) + "%";
+    if (current === total) renderBrief();
     back.hidden = current === 1;
     next.hidden = current === total;
     submit.hidden = current !== total;
@@ -179,7 +181,10 @@
     if (!stepValid(current)) return showError("missing_answers");
     track("STEP", current);
     save();
-    show(current + 1);
+    // skip questions already answered (by the one-sentence box or a quick start); back still visits them
+    var n = current + 1;
+    while (n < total && stepValid(n) && steps[n - 1].querySelector("input[type=radio]")) n++;
+    show(n);
     focusStep();
   }
   function startOnce() {
@@ -419,6 +424,116 @@
     });
     box.hidden = false;
     talk(null, null);
+  }
+
+  // ------------------------------------------------------------------ buyer brief: value BEFORE contact details
+  var ANSWER_STEPS = ["location", "propertyType", "budget", "purpose", "timeline", "payment"];
+  var VAGUE = { not_sure: 1, undecided: 1, other: 1 };
+  function item(list, text, cls) {
+    var li = document.createElement("li");
+    if (cls) li.className = cls;
+    li.textContent = text;
+    list.appendChild(li);
+  }
+  function chosenLabels(d) {
+    var out = [];
+    ANSWER_STEPS.forEach(function (name) {
+      var v = d[name];
+      if (v && !VAGUE[v] && T.labels[name] && T.labels[name][v]) out.push(T.labels[name][v]);
+      if (name === "location" && d.area) out.push(d.area);
+    });
+    return out;
+  }
+  // tips follow ONLY from the buyer's own answers; general questions, never prices, returns or legal claims
+  function briefTips(d) {
+    var keys = [];
+    if (d.purpose === "investment") keys.push("investment", "charges");
+    if (d.purpose === "relocation") keys.push("relocation", "family");
+    if (d.purpose === "residence") keys.push("family");
+    if (d.payment === "mortgage") keys.push("mortgage");
+    if (d.payment === "cash") keys.push("cash");
+    if (d.timeline === "immediately" || d.timeline === "lt30d") keys.push("urgent");
+    if (d.timeline === "exploring") keys.push("exploring");
+    keys = keys.slice(0, 4);
+    keys.push("licence");
+    return keys;
+  }
+  function renderBrief() {
+    var box = document.getElementById("brief");
+    if (!box || !T.brief) return;
+    var d = answers();
+    var chosen = document.getElementById("brief-chosen");
+    var tips = document.getElementById("brief-tips");
+    chosen.textContent = "";
+    tips.textContent = "";
+    chosenLabels(d).forEach(function (t) {
+      item(chosen, t);
+    });
+    briefTips(d).forEach(function (k) {
+      if (T.brief[k]) item(tips, T.brief[k]);
+    });
+    box.hidden = false;
+  }
+
+  // ------------------------------------------------------------------ one sentence → answers (site/intent.js, on THIS device)
+  function openSteps() {
+    var n = 0;
+    for (var i = 1; i < total; i++) if (!stepValid(i)) n++;
+    return n;
+  }
+  var intentForm = document.getElementById("intent");
+  if (intentForm && window.PLHIntent && T.intent) {
+    var intentOut = document.getElementById("intent-out");
+    var understoodBox = document.getElementById("understood");
+    var say = function (box, text) {
+      box.textContent = "";
+      var el = document.createElement("p");
+      el.textContent = text;
+      box.appendChild(el);
+      box.hidden = false;
+    };
+    intentForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var I = T.intent;
+      var r = window.PLHIntent.parse(document.getElementById("intent-q").value, T.lang);
+      // only the CATEGORY and how many answers were understood leave the device — never the sentence
+      track("INTENT", r.understood.length, r.scope);
+      understoodBox.hidden = true;
+      if (r.scope === "rent") return say(intentOut, I.rent);
+      if (I.needs[r.scope]) return say(intentOut, I.outOfScope.replace("{x}", I.needs[r.scope]));
+      intentOut.hidden = true;
+      Object.keys(r.answers).forEach(function (name) {
+        var el = form.querySelector('input[type=radio][name="' + name + '"][value="' + r.answers[name] + '"]');
+        if (el) el.checked = true;
+      });
+      if (r.area && form.elements.area && !form.elements.area.value) form.elements.area.value = r.area;
+      startOnce();
+      save();
+      if (!r.understood.length) {
+        say(understoodBox, I.nothing);
+      } else {
+        understoodBox.textContent = "";
+        var h = document.createElement("p");
+        h.className = "understood-h";
+        h.textContent = I.understood;
+        var ul = document.createElement("ul");
+        ul.className = "brief-chips";
+        chosenLabels(answers()).forEach(function (t) {
+          item(ul, t);
+        });
+        var left = openSteps();
+        var tail = document.createElement("p");
+        tail.className = "hint";
+        tail.textContent = left ? I.remaining.replace("{n}", left) : I.allSet;
+        understoodBox.appendChild(h);
+        understoodBox.appendChild(ul);
+        understoodBox.appendChild(tail);
+        understoodBox.hidden = false;
+      }
+      show(firstOpenStep());
+      document.getElementById("find").scrollIntoView({ block: "start" });
+      focusStep();
+    });
   }
 
   // ------------------------------------------------------------------ quick starts (one page for every kind of buyer)

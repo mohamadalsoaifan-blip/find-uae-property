@@ -29,14 +29,24 @@
 <section class="hero">
   <h1>Find your property in the UAE</h1>
   <p class="lead">Tell us what you are looking for — location, budget and timeline. A real person reviews every request and, only if you agree, introduces you to a licensed UAE real-estate advisor who can show you matching properties.</p>
-  <p class="quick-title">What are you looking for?</p>
+  <form id="intent" class="intent" novalidate>
+    <label for="intent-q">Tell us what you are looking for, in your own words</label>
+    <div class="intent-row">
+      <textarea id="intent-q" rows="2" maxlength="300" autocomplete="off" enterkeyhint="go" placeholder="e.g. A 2-bedroom apartment in Dubai under AED 1.5M, for investment"></textarea>
+      <button type="submit" id="intent-go">Continue</button>
+    </div>
+    <p class="hint">Understood on your device — your words are not sent anywhere.</p>
+    <div id="intent-out" class="intent-out" aria-live="polite" hidden></div>
+  </form>
+  <p class="quick-title">Or start with</p>
   <div class="quick"><a class="quick-btn" href="?for=dubai-villas#find" data-for="dubai-villas">🏡 A villa in Dubai</a><a class="quick-btn" href="?for=dubai-apartments-investment#find" data-for="dubai-apartments-investment">🏢 Investment apartment in Dubai</a><a class="quick-btn" href="?for=abu-dhabi#find" data-for="abu-dhabi">🌴 Property in Abu Dhabi</a><a class="quick-btn" href="?for=relocating-to-uae#find" data-for="relocating-to-uae">✈️ Moving to the UAE</a></div>
-  <p><a class="cta" id="cta" href="#find">Find properties for me</a></p>
+  <p><a class="cta secondary" id="cta" href="#find">Or answer step by step</a></p>
   <p class="note">About 2 minutes · no obligation · we do not charge buyers</p>
   <ul class="trust"><li>We are not a broker and we do not sell property ourselves.</li><li>Your details are shared with an advisor only if you tick a separate box.</li><li>We never ask for ID, passport or bank details.</li></ul>
 </section>
 <section id="find" class="card form-card" aria-labelledby="form-title">
   <h2 id="form-title">Tell us what you are looking for</h2>
+  <div id="understood" class="understood" aria-live="polite" hidden></div>
   <form id="buyer-form" novalidate>
     <p class="progress" aria-live="polite"><span id="step-label"></span><span class="bar"><span id="step-bar"></span></span></p>
     <div class="step" data-step="1">
@@ -110,6 +120,14 @@
   </fieldset>
     </div>
     <div class="step" data-step="7" hidden>
+  <section id="brief" class="brief" aria-labelledby="brief-title" hidden>
+    <h3 id="brief-title">Your buyer brief</h3>
+    <p class="brief-h">What you are looking for</p>
+    <ul id="brief-chosen" class="brief-chips"></ul>
+    <p class="brief-h">Worth checking in your case</p>
+    <ul id="brief-tips" class="check"></ul>
+    <p class="note">General questions to ask — not legal or financial advice. A licensed advisor confirms the details for your situation.</p>
+  </section>
   <fieldset class="q">
     <legend>How can we reach you?</legend>
     <label class="field"><span>Your name</span><input name="name" required minlength="2" maxlength="80" autocomplete="name"></label>
@@ -175,8 +193,9 @@
   <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
   <p><a href="privacy/">Privacy</a></p>
 </footer>
-<script type="application/json" id="t">{"lang":"en","stepOf":"Step {n} of {total}","sending":"Sending…","submit":"Send my request","errors":{"missing_answers":"Please answer every question.","name_required":"Please enter your name.","invalid_email":"That email address does not look right.","invalid_phone":"Please enter the phone number with the country code, e.g. +971 50 123 4567.","contact_required":"Please give an email or a phone number.","contact_consent_required":"Please tick the box that allows us to contact you.","sensitive_data_not_allowed":"Please remove any bank, card or ID numbers — we never need them.","too_many_requests":"Too many attempts from this connection. Please try again later.","network":"We could not send your request. Your answers are kept — please try again.","generic":"Something went wrong. Your answers are kept — please try again."},"whatsappText":"Hello, I am looking for a property in the UAE:","concierge":{"cont":"Continue","error":"The assistant is not available right now — your request is already saved."},"quick":{"dubai-villas":{"location":"dubai","propertyType":"villa"},"dubai-apartments-investment":{"location":"dubai","propertyType":"apartment","purpose":"investment"},"abu-dhabi":{"location":"abu_dhabi"},"relocating-to-uae":{"purpose":"relocation"}},"labels":{"location":{"dubai":"Dubai","abu_dhabi":"Abu Dhabi","other_uae":"Other emirate"},"propertyType":{"apartment":"Apartment","villa":"Villa","townhouse":"Townhouse","commercial":"Commercial","not_sure":"Not sure yet"},"budget":{"lt1m":"Under AED 1M","1to2m":"AED 1M – 2M","2to5m":"AED 2M – 5M","5to10m":"AED 5M – 10M","10mplus":"AED 10M +","not_sure":"Not sure yet"},"purpose":{"residence":"A home to live in","investment":"Investment","relocation":"Relocating to the UAE","other":"Something else"},"timeline":{"immediately":"Immediately","lt30d":"Within 30 days","1to3m":"In 1 – 3 months","3to6m":"In 3 – 6 months","exploring":"Just exploring"},"payment":{"cash":"Cash","mortgage":"Mortgage","undecided":"Not decided yet"}}}</script>
+<script type="application/json" id="t">{"lang":"en","stepOf":"Step {n} of {total}","sending":"Sending…","submit":"Send my request","errors":{"missing_answers":"Please answer every question.","name_required":"Please enter your name.","invalid_email":"That email address does not look right.","invalid_phone":"Please enter the phone number with the country code, e.g. +971 50 123 4567.","contact_required":"Please give an email or a phone number.","contact_consent_required":"Please tick the box that allows us to contact you.","sensitive_data_not_allowed":"Please remove any bank, card or ID numbers — we never need them.","too_many_requests":"Too many attempts from this connection. Please try again later.","network":"We could not send your request. Your answers are kept — please try again.","generic":"Something went wrong. Your answers are kept — please try again."},"whatsappText":"Hello, I am looking for a property in the UAE:","concierge":{"cont":"Continue","error":"The assistant is not available right now — your request is already saved."},"intent":{"label":"Tell us what you are looking for, in your own words","placeholder":"e.g. A 2-bedroom apartment in Dubai under AED 1.5M, for investment","go":"Continue","privacy":"Understood on your device — your words are not sent anywhere.","or":"Or start with","understood":"We understood","remaining":"{n} quick questions left — we skip what you already told us.","allSet":"You already answered everything — just add how we can reach you.","manual":"Or answer step by step","nothing":"We could not pick out the details. Try naming the emirate, the type of property or a budget — or simply answer the questions below.","rent":"We only help people who want to buy. For renting, a licensed letting agent or the main property portals are the right place.","outOfScope":"Today we only help with buying property in the UAE — not {x} yet. We have noted (anonymously) that people ask for it.","needs":{"company_setup":"company setup","car":"cars","visa":"visas","job":"jobs","school":"schools"}},"brief":{"licence":"Check the advisor's licence yourself before you share documents or pay anything.","investment":"Ask for the real signed lease of a similar unit — not an estimated rent or a promised return.","charges":"Ask for the yearly service charges in writing; they change what you actually earn or spend.","mortgage":"Get a bank pre-approval before you reserve anything, so you know your real limit.","cash":"Ask for every transfer and registration cost in writing before paying a deposit.","urgent":"Moving fast is fine — but read the contract before any deposit, never after.","exploring":"No rush: an advisor can explain areas and prices first, with no obligation.","relocation":"Visit at rush hour: the daily drive to work or school matters more than the view.","family":"Check schools, clinics and the commute for every member of the family."},"quick":{"dubai-villas":{"location":"dubai","propertyType":"villa"},"dubai-apartments-investment":{"location":"dubai","propertyType":"apartment","purpose":"investment"},"abu-dhabi":{"location":"abu_dhabi"},"relocating-to-uae":{"purpose":"relocation"}},"labels":{"location":{"dubai":"Dubai","abu_dhabi":"Abu Dhabi","other_uae":"Other emirate"},"propertyType":{"apartment":"Apartment","villa":"Villa","townhouse":"Townhouse","commercial":"Commercial","not_sure":"Not sure yet"},"budget":{"lt1m":"Under AED 1M","1to2m":"AED 1M – 2M","2to5m":"AED 2M – 5M","5to10m":"AED 5M – 10M","10mplus":"AED 10M +","not_sure":"Not sure yet"},"purpose":{"residence":"A home to live in","investment":"Investment","relocation":"Relocating to the UAE","other":"Something else"},"timeline":{"immediately":"Immediately","lt30d":"Within 30 days","1to3m":"In 1 – 3 months","3to6m":"In 3 – 6 months","exploring":"Just exploring"},"payment":{"cash":"Cash","mortgage":"Mortgage","undecided":"Not decided yet"}}}</script>
 <script src="config.js"></script>
+<script src="intent.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
