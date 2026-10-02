@@ -16,7 +16,7 @@
 <meta property="og:description" content="Buying property in Dubai, Abu Dhabi or elsewhere in the UAE? Share your requirements in about two minutes and, with your permission, get introduced to a licensed UAE real-estate advisor.">
 <meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/">
 <meta property="og:locale" content="en_AE">
-<meta name="theme-color" content="#0b5cab">
+<meta name="theme-color" content="#071a33">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Find Your UAE Property","url":"https://mohamadalsoaifan-blip.github.io/find-uae-property/","inLanguage":"en"}</script>
@@ -25,12 +25,22 @@
 <body>
 <header class="top">
   <a class="brand" href="./">Find Your UAE Property</a>
+  <nav class="top-nav">
+    <a href="tools/">Buyer calculators</a>
+    <a href="compare/">Compare the properties you found</a>
+  </nav>
   <a class="lang" href="ar/" hreflang="ar" lang="ar">العربية</a>
 </header>
 <main>
-<section class="hero">
+<section class="hero hero-home">
+<div class="hero-in">
+<div class="hero-copy">
+  <p class="eyebrow">About 2 minutes · no obligation · we do not charge buyers</p>
   <h1>Find your property in the UAE</h1>
   <p class="lead">Tell us what you are looking for — location, budget and timeline. A real person reviews every request and, only if you agree, introduces you to a licensed UAE real-estate advisor who can show you matching properties.</p>
+  <ul class="trust"><li>We are not a broker and we do not sell property ourselves.</li><li>Your details are shared with an advisor only if you tick a separate box.</li><li>We never ask for ID, passport or bank details.</li></ul>
+</div>
+<div class="hero-panel">
   <form id="intent" class="intent" novalidate>
     <label for="intent-q">Tell us what you are looking for, in your own words</label>
     <div class="intent-row">
@@ -40,13 +50,16 @@
     <p class="hint">Understood on your device — your words are not sent anywhere.</p>
     <div id="intent-out" class="intent-out" aria-live="polite" hidden></div>
   </form>
-  <p class="tools-link"><a href="tools/">🧮 Calculators: upfront costs, budget, yield</a><br><a href="compare/">⚖️ Compare the properties you found</a></p>
   <p class="quick-title">Or start with</p>
   <div class="quick"><a class="quick-btn" href="?for=dubai-villas#find" data-for="dubai-villas">🏡 A villa in Dubai</a><a class="quick-btn" href="?for=dubai-apartments-investment#find" data-for="dubai-apartments-investment">🏢 Investment apartment in Dubai</a><a class="quick-btn" href="?for=abu-dhabi#find" data-for="abu-dhabi">🌴 Property in Abu Dhabi</a><a class="quick-btn" href="?for=relocating-to-uae#find" data-for="relocating-to-uae">✈️ Moving to the UAE</a></div>
-  <p><a class="cta secondary" id="cta" href="#find">Or answer step by step</a></p>
-  <p class="note">About 2 minutes · no obligation · we do not charge buyers</p>
-  <ul class="trust"><li>We are not a broker and we do not sell property ourselves.</li><li>Your details are shared with an advisor only if you tick a separate box.</li><li>We never ask for ID, passport or bank details.</li></ul>
+  <p class="cta-row"><a class="cta secondary" id="cta" href="#find">Or answer step by step</a></p>
+</div>
+</div>
 </section>
+<nav class="tools-link" aria-label="Buyer calculators">
+  <a class="feature" href="tools/"><b>🧮 Calculators: upfront costs, budget, yield</b><span>Free calculators for buying property in Dubai and the UAE: cash needed upfront (incl. the 4% DLD fee), what your cash can buy with a mortgage, and rental yield from a real lease. Sources shown, no sign-up.</span></a>
+  <a class="feature" href="compare/"><b>⚖️ Compare the properties you found</b><span>Found a few properties on different websites? Enter their numbers and see the real cash needed, price per sqft, service charges and rental yield side by side. Calculated on your device; no sign-up.</span></a>
+</nav>
 <section id="find" class="card form-card" aria-labelledby="form-title">
   <h2 id="form-title">Tell us what you are looking for</h2>
   <div id="understood" class="understood" aria-live="polite" hidden></div>
@@ -170,7 +183,7 @@
     </div>
   </div>
 </section>
-<section class="card">
+<section class="card how-card">
   <h2>How it works</h2>
   <ol class="how"><li><b>Tell us what you need</b><span>Seven short questions: where, what type, budget, purpose, timeline, payment and how to reach you.</span></li><li><b>A person reviews it</b><span>No robocalls and no mass messages. We read your request and reply about your needs.</span></li><li><b>Introduction — only with your consent</b><span>If you allow it, we pass your request to ONE licensed UAE advisor or developer sales team suited to it.</span></li><li><b>You decide</b><span>Prices, availability and contracts come directly from the licensed advisor. You are never obliged to buy.</span></li></ol>
 </section>
@@ -193,6 +206,7 @@
 </section>
 </main>
 <footer class="foot">
+  <p class="foot-brand">Find Your UAE Property</p>
   <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
   <p><a href="about/">About &amp; how we work</a> · <a href="privacy/">Privacy</a> · <a href="tools/">Buyer calculators</a></p>
 </footer>
