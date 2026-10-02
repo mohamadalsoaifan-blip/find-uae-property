@@ -500,6 +500,17 @@
       track("INTENT", r.understood.length, r.scope);
       understoodBox.hidden = true;
       if (r.scope === "rent") return say(intentOut, I.rent);
+      // universal intent: a need that belongs to another ACTIVE vertical is routed to its journey (never cross-sold)
+      var links = cfg.links || {};
+      if (r.scope === "company_setup" && links.business) {
+        say(intentOut, I.business);
+        var a = document.createElement("a");
+        a.className = "cta";
+        a.href = links.business[T.lang] || links.business.en;
+        a.textContent = I.businessLink;
+        intentOut.appendChild(a);
+        return;
+      }
       if (I.needs[r.scope]) return say(intentOut, I.outOfScope.replace("{x}", I.needs[r.scope]));
       intentOut.hidden = true;
       Object.keys(r.answers).forEach(function (name) {
