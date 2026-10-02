@@ -143,12 +143,12 @@ main {
   padding: 32px max(16px, calc(50vw - 560px)) 40px;
   color: #fff;
   background-color: var(--hero-1);
-  /* original Dubai skyline illustration (site/dubai-skyline.svg) under a dark veil so text stays readable */
+  /* Dubai skyline photo (owner-supplied; phone crop centred on the Burj Khalifa) under a dark veil so text stays readable */
   background-image:
     linear-gradient(180deg, rgb(6 20 43 / .55) 0%, rgb(6 20 43 / .25) 50%, rgb(6 20 43 / .6) 100%),
-    url("dubai-skyline.svg");
+    url("hero-dubai-m.webp");
   background-size: cover, cover;
-  background-position: center, 50% 100%;
+  background-position: center, 50% 40%;
   background-repeat: no-repeat;
   overflow: hidden;
 }
@@ -620,6 +620,12 @@ details p {
   display: none !important;
 }
 @media (min-width: 720px) {
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgb(6 20 43 / .55) 0%, rgb(6 20 43 / .25) 50%, rgb(6 20 43 / .6) 100%),
+      url("hero-dubai.webp");
+    background-position: center, 50% 55%;
+  }
   h1 {
     font-size: 38px;
   }
@@ -1039,15 +1045,15 @@ button.small {
     background-image:
       linear-gradient(90deg, rgb(6 20 43 / .75) 0%, rgb(6 20 43 / .45) 40%, transparent 60%),
       linear-gradient(180deg, rgb(6 20 43 / .55) 0%, rgb(6 20 43 / .25) 50%, rgb(6 20 43 / .6) 100%),
-      url("dubai-skyline.svg");
+      url("hero-dubai.webp");
     background-size: cover, cover, cover;
-    background-position: center, center, 50% 100%;
+    background-position: center, center, 50% 35%;
   }
   [dir=rtl] .hero-home {
     background-image:
       linear-gradient(270deg, rgb(6 20 43 / .75) 0%, rgb(6 20 43 / .45) 40%, transparent 60%),
       linear-gradient(180deg, rgb(6 20 43 / .55) 0%, rgb(6 20 43 / .25) 50%, rgb(6 20 43 / .6) 100%),
-      url("dubai-skyline.svg");
+      url("hero-dubai.webp");
   }
   .hero-home {
     padding-top: 56px;
