@@ -1880,3 +1880,42 @@ h3 {
   gap: var(--sp-2);
   margin: var(--sp-3) 0;
 }
+
+/* explainer guides */
+.guide .guide-rows {
+  margin: var(--sp-3) 0;
+}
+.guide .sources {
+  padding-inline-start: 20px;
+  line-height: 1.7;
+}
+.guide .sources .kind {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #e6f4ea;
+  color: var(--ok);
+}
+.guide-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-3) 0 0;
+}
+@media (prefers-color-scheme: dark) {
+  .guide .sources .kind {
+    background: #12301c;
+  }
+}
+.hero .guide-link a {
+  color: #fff;
+  font-weight: 600;
+}
+.hero .guide-link .ico {
+  color: #7ff0e2;
+}
+[dir="rtl"] .guide-link .ico-arrow {
+  transform: scaleX(-1);
+}
