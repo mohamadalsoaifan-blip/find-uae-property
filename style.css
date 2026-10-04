@@ -3,7 +3,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-arabic-400.woff2") format("woff2");
   unicode-range:
     U+0600-06FF,
@@ -24,7 +24,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-latin-400.woff2") format("woff2");
   unicode-range:
     U+0000-00FF,
@@ -51,7 +51,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-arabic-600.woff2") format("woff2");
   unicode-range:
     U+0600-06FF,
@@ -72,7 +72,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-latin-600.woff2") format("woff2");
   unicode-range:
     U+0000-00FF,
@@ -99,7 +99,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-arabic-700.woff2") format("woff2");
   unicode-range:
     U+0600-06FF,
@@ -120,7 +120,7 @@
   font-family: "Plex Arabic";
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
   src: url("fonts/plex-arabic-latin-700.woff2") format("woff2");
   unicode-range:
     U+0000-00FF,
@@ -1093,6 +1093,11 @@ details p {
 .cmp-options {
   display: grid;
   gap: 12px;
+}
+/* the two option cards are drawn by compare-page.js: reserve their measured height (~1.5k px) so nothing below
+   jumps when they appear (layout shift, CLS) */
+.cmp-options:empty {
+  min-height: 1500px;
 }
 .cmp-card legend {
   font-weight: 700;
