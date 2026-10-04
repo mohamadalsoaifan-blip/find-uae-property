@@ -23,7 +23,8 @@
   function has(text, words) {
     for (var i = 0; i < words.length; i++) {
       var w = words[i];
-      var re = new RegExp("(^|[^\\p{L}\\p{N}])(?:[وبلف]|ال|بال|لل|وال)?" + w + "(?=$|[^\\p{L}\\p{N}])", "u");
+      // an underscore joins words: "property_leads" is not the word "property"
+      var re = new RegExp("(^|[^\\p{L}\\p{N}_])(?:[وبلف]|ال|بال|لل|وال)?" + w + "(?=$|[^\\p{L}\\p{N}_])", "u");
       if (re.test(text)) return w;
     }
     return null;
@@ -55,8 +56,8 @@
     ["abu_dhabi", "Al Reem Island", "جزيرة الريم", ["al reem", "reem island", "جزيره الريم", "الريم"]],
   ];
   var EMIRATES = [
-    ["dubai", ["dubai", "dxb", "دبي"]],
-    ["abu_dhabi", ["abu dhabi", "abudhabi", "ابوظبي", "ابو ظبي"]],
+    ["dubai", ["dubai", "dubay", "dubaii", "dxb", "دبي"]],
+    ["abu_dhabi", ["abu dhabi", "abudhabi", "abu dabi", "abu-dhabi", "ابوظبي", "ابو ظبي"]],
     ["other_uae", [
       "sharjah",
       "ajman",
@@ -73,8 +74,23 @@
   ];
   var TYPES = [
     ["townhouse", ["townhouse", "town house", "تاون هاوس", "تاونهاوس"]],
-    ["villa", ["villa", "villas", "فيلا", "فلل", "فيلل"]],
-    ["apartment", ["apartment", "apartments", "flat", "flats", "studio", "penthouse", "شقه", "شقق", "ستوديو", "بنتهاوس"]],
+    ["villa", ["villa", "villas", "vila", "فيلا", "فلل", "فيلل"]],
+    ["apartment", [
+      "apartment",
+      "apartments",
+      "appartment",
+      "appartments",
+      "apartmnt",
+      "apartement",
+      "flat",
+      "flats",
+      "studio",
+      "penthouse",
+      "شقه",
+      "شقق",
+      "ستوديو",
+      "بنتهاوس",
+    ]],
     ["commercial", ["office", "shop", "retail", "warehouse", "commercial", "مكتب", "محل", "مستودع", "تجاري"]],
   ];
   var PURPOSES = [
@@ -227,6 +243,8 @@
     "car",
     "cars",
     "vehicle",
+    "van",
+    "seater",
     "suv",
     "sedan",
     "saloon",
@@ -290,9 +308,9 @@
     "كورولا",
   ];
   var BODIES = [
-    ["suv", ["suv", "4x4", "jeep", "crossover", "land cruiser", "patrol", "prado", "جيب", "دفع رباعي", "باترول", "لاندكروزر", "برادو"]],
     ["pickup", ["pickup", "pick up", "pick-up", "بيك اب", "بكب", "ونيت"]],
     ["mpv", ["minivan", "mpv", "van", "people carrier", "فان", "باص"]],
+    ["suv", ["suv", "4x4", "jeep", "crossover", "land cruiser", "patrol", "prado", "جيب", "دفع رباعي", "باترول", "لاندكروزر", "برادو"]],
     ["sedan", ["sedan", "saloon", "camry", "corolla", "سيدان", "صالون", "كامري", "كورولا"]],
     ["hatchback", ["hatchback", "هاتشباك"]],
   ];
@@ -324,7 +342,7 @@
   var USAGE = [
     ["offroad", ["off-road", "offroad", "off road", "desert", "dunes", "صحراء", "الصحراء", "طلعات", "تطعيس", "البر"]],
     ["highway", ["highway", "long distance", "commute between", "road trips", "طريق سريع", "مسافات طويله", "سفر"]],
-    ["city", ["city", "in town", "school run", "داخل المدينه", "المدينه", "مشاوير"]],
+    ["city", ["city", "in town", "school run", "داخل المدينه", "المدينه", "مدينه", "مشاوير"]],
   ];
   var SEAT_WORD = { "خمس": 5, "خمسه": 5, "سبع": 7, "سبعه": 7, "ثمان": 8, "ثمانيه": 8, "ثماني": 8, "تسع": 9 };
   function carSeats(t) {

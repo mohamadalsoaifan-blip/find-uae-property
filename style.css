@@ -1379,3 +1379,35 @@ ol.checks {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* decision workspace */
+.ws-card h3 {
+  font-size: 16px;
+  margin: 14px 0 8px;
+}
+.ws-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+}
+.ws-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ws-list b {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ws-card .ex-chips {
+  margin-bottom: 8px;
+}
+.ws-empty {
+  text-align: start;
+  margin: 18px 0 0;
+}
+.ws-actions {
+  margin: 8px 0 24px;
+}

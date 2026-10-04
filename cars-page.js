@@ -23,6 +23,17 @@
       filled++;
     }
   });
+  if (!filled) {
+    try {
+      var saved = JSON.parse(localStorage.getItem("plh_car_guide_v1") || "null") || {};
+      KEYS.forEach(function (k) {
+        var v = saved[k];
+        if (typeof v !== "string" || !/^[a-z0-9_]{2,20}$/.test(v)) return;
+        var input = form.querySelector('input[name="c-' + k + '"][value="' + v + '"]');
+        if (input) input.checked = true;
+      });
+    } catch (_) { /* nothing saved */ }
+  }
   if (filled) {
     // came from the one-sentence box: show the explained answer first, the questions below to refine it
     document.getElementById("car-prefilled").hidden = false;
@@ -39,9 +50,20 @@
     return a;
   }
 
+  // remember the answers on this device so the workspace can resume them (never sent anywhere)
+  function remember(a) {
+    var keep = {};
+    KEYS.forEach(function (k) {
+      if (a[k]) keep[k] = a[k];
+    });
+    try {
+      localStorage.setItem("plh_car_guide_v1", JSON.stringify(keep));
+    } catch (_) { /* private mode */ }
+  }
   var tracked = false;
   function render() {
     var a = answers();
+    remember(a);
     out.textContent = "";
     out.appendChild(el("h2", null, T.resultsH));
     if (!a.seats && !a.usage && (!a.body || a.body === "not_sure")) {
