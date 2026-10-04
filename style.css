@@ -1411,3 +1411,258 @@ ol.checks {
 .ws-actions {
   margin: 8px 0 24px;
 }
+
+/* icon system: one line family drawn for this site (24px grid, 1.7 stroke), painted with currentColor via mask */
+.ico {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.2em;
+  background-color: currentColor;
+  -webkit-mask: var(--ico) center / contain no-repeat;
+  mask: var(--ico) center / contain no-repeat;
+}
+[dir=rtl] .ico-arrow,
+[dir=rtl] .ico-plane {
+  transform: scaleX(-1);
+}
+.ico-home {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M3.5%2011%2012%204l8.5%207v8.5a1%201%200%200%201-1%201H15v-6H9v6H4.5a1%201%200%200%201-1-1Z%27/%3E%3C/svg%3E");
+}
+.ico-car {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M4%2016.5v-3.8L6.2%207.6A1.5%201.5%200%200%201%207.6%206.7h8.8a1.5%201.5%200%200%201%201.4.9l2.2%205.1v3.8M4%2016.5h16M4%2016.5V19M20%2016.5V19M7.5%2012.8h.01M16.5%2012.8h.01M5.5%2011h13%27/%3E%3C/svg%3E");
+}
+.ico-calc {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M6.5%203.5h11a1%201%200%200%201%201%201v15a1%201%200%200%201-1%201h-11a1%201%200%200%201-1-1v-15a1%201%200%200%201%201-1ZM8.5%207.5h7M8.5%2012h1.5M14%2012h1.5M8.5%2016h1.5M14%2016h1.5%27/%3E%3C/svg%3E");
+}
+.ico-compare {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M4%205.5h6v13H4ZM14%205.5h6v13h-6ZM6%209h2M16%209h2M6%2012h2M16%2012h2%27/%3E%3C/svg%3E");
+}
+.ico-bookmark {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M6.5%203.5h11v17l-5.5-3.6-5.5%203.6Z%27/%3E%3C/svg%3E");
+}
+.ico-pin {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M12%2020.5s-6.5-6-6.5-11a6.5%206.5%200%200%201%2013%200c0%205-6.5%2011-6.5%2011ZM12%2011.6a2.1%202.1%200%201%200%200-4.2%202.1%202.1%200%200%200%200%204.2Z%27/%3E%3C/svg%3E");
+}
+.ico-building {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M5%2020.5V4.5h9v16M14%209.5h5v11M8%208h3M8%2011.5h3M8%2015h3M3.5%2020.5h17%27/%3E%3C/svg%3E");
+}
+.ico-plane {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M3%2013.5%2021%206l-4.5%2015-4-6.5Zm9.5%201L21%206%27/%3E%3C/svg%3E");
+}
+.ico-check {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M5%2012.5%2010%2017l9-10%27/%3E%3C/svg%3E");
+}
+.ico-shield {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M12%203.5%2019%206v5.5c0%204.5-3%207.6-7%209-4-1.4-7-4.5-7-9V6Z%20M9%2012l2%202%204-4.5%27/%3E%3C/svg%3E");
+}
+.ico-arrow {
+  --ico: url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2024%2024%27%20fill=%27none%27%20stroke=%27black%27%20stroke-width=%271.7%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%3E%3Cpath%20d=%27M5%2012h14M13%206l6%206-6%206%27/%3E%3C/svg%3E");
+}
+
+/* ================================================================ design tokens v2 (one scale for the whole site)
+   Type: 1.2 ratio; Arabic gets a slightly taller line-height. Space: 4px base. Motion: fast and subtle. */
+:root {
+  --fs-xs: 13px;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+  --fs-display: 48px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --dur: .16s;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+[dir=rtl] body {
+  line-height: 1.75;
+}
+[dir=rtl] h1,
+[dir=rtl] h2,
+[dir=rtl] h3 {
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+h2 {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+h3 {
+  font-weight: 700;
+}
+.lead {
+  max-width: 62ch;
+}
+
+/* homepage: intent first */
+.hero-home .hero-copy .lead {
+  font-size: var(--fs-lg);
+  margin-bottom: 0;
+}
+.vchip {
+  gap: var(--sp-2);
+}
+.vchip .ico {
+  width: 20px;
+  height: 20px;
+}
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+.quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.quick-btn .ico {
+  color: var(--accent);
+}
+.quick-title {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* tools: compact strip under the hero (platform homepage) */
+.tools-link.compact {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+.tools-link.compact .feature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 14px 16px;
+  min-height: 56px;
+}
+.tools-link.compact .feature b {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+}
+.tools-link.compact .feature b::after {
+  content: none;
+}
+.feature .ico {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+.tools-link:not(.compact) .feature .ico {
+  margin-bottom: var(--sp-2);
+}
+@media (min-width: 1000px) {
+  .tools-link.compact {
+    margin-top: -28px;
+  }
+}
+
+/* journeys */
+.journey h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.journey h3 .ico {
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+}
+.journey.j-cars h3 .ico {
+  color: var(--accent-2);
+}
+.cta .ico-arrow {
+  width: 18px;
+  height: 18px;
+}
+
+/* intent summary: "this is what we understood" before the questions */
+.understood {
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--accent);
+  background: var(--soft);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+}
+.understood-h {
+  font-size: var(--fs-xs);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: var(--sp-2) !important;
+}
+[dir=rtl] .understood-h {
+  letter-spacing: 0;
+  font-size: var(--fs-sm);
+}
+.understood .brief-chips li {
+  border-color: transparent;
+  background: var(--card);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* cost snapshot: the number that answers "what will this cost me?" leads, the rest supports it */
+.result .res {
+  align-items: baseline;
+}
+.result .res.total {
+  padding: var(--sp-3) 0;
+}
+.result .res.total b {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+.result .res.total span {
+  font-weight: 600;
+}
+.result .res b {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* motion: fast, subtle, and off for people who prefer less motion */
+.feature,
+.journey,
+.choice span,
+.vchip {
+  transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.journey:hover {
+  border-color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .feature,
+  .journey,
+  .choice span,
+  .vchip,
+  .quick-btn {
+    transition: none;
+  }
+}
+@media (min-width: 1000px) {
+  .hero-home h1 {
+    font-size: var(--fs-display);
+  }
+}
