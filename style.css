@@ -1,3 +1,52 @@
+/* IBM Plex Sans Arabic (SIL Open Font License 1.1, site/fonts/OFL.txt), self-hosted: no third-party request. */
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plex-arabic-arabic-400.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plex-arabic-latin-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/plex-arabic-arabic-600.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/plex-arabic-latin-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/plex-arabic-arabic-700.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC;
+}
+@font-face {
+  font-family: "Plex Arabic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/plex-arabic-latin-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 /* Mobile-first, system fonts (no web-font download, strict CSP), light + dark, RTL via logical properties. */
 :root {
   --bg: #f4f6fa;
@@ -50,7 +99,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Tahoma, "Noto Sans Arabic", "Geeza Pro", sans-serif;
+  font: 16px/1.65 "Plex Arabic", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Tahoma, "Noto Sans Arabic", "Geeza Pro",
+    sans-serif;
   overflow-x: clip;
 }
 a {
@@ -1173,4 +1223,159 @@ ol.checks {
   padding-inline-start: 22px;
   display: grid;
   gap: 8px;
+}
+
+/* platform homepage: two journeys, example, principles */
+.journeys {
+  margin: 28px 0 8px;
+}
+.journeys > h2,
+.principles > h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.journey-grid {
+  display: grid;
+  gap: 14px;
+}
+.journey {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.journey::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--hero-2), var(--accent-2));
+}
+.journey.j-cars::before {
+  background: linear-gradient(90deg, var(--accent-2), var(--gold));
+}
+.journey h3 {
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+.journey-lead {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+.journey ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  gap: 8px;
+  flex: 1;
+}
+.journey li {
+  position: relative;
+  padding-inline-start: 28px;
+}
+.journey li::before {
+  content: "✓";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 20px;
+  text-align: center;
+}
+.journey .cta {
+  width: 100%;
+}
+.example .ex {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+.ex-q {
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 17px;
+}
+.ex-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+}
+.ex-chips li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+.principles {
+  margin: 24px calc(50% - 50vw) 8px;
+  padding: 36px max(16px, calc(50vw - 380px));
+  background:
+    radial-gradient(700px 300px at 100% 0%, rgb(10 127 134 / .35), transparent 60%),
+    linear-gradient(160deg, var(--hero-1), var(--hero-2));
+  color: #fff;
+}
+.principles > h2 {
+  color: #fff;
+}
+.principle-grid {
+  display: grid;
+  gap: 12px;
+}
+.principle {
+  position: relative;
+  padding: 16px 16px 16px;
+  padding-inline-start: 60px;
+  border-radius: 14px;
+  background: rgb(255 255 255 / .06);
+  border: 1px solid rgb(255 255 255 / .12);
+}
+.pnum {
+  position: absolute;
+  inset-inline-start: 16px;
+  top: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold), #e8c45a);
+  color: #1b1405;
+  font-weight: 800;
+  line-height: 30px;
+  text-align: center;
+}
+.principle h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  color: #fff;
+}
+.principle p {
+  margin: 0;
+  color: #c9d6ea;
+  font-size: 15px;
+}
+@media (min-width: 720px) {
+  .journey-grid,
+  .principle-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
