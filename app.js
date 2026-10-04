@@ -511,6 +511,20 @@
         intentOut.appendChild(a);
         return;
       }
+      if (r.scope === "car" && links.cars) {
+        // the car answers the sentence stated travel as URL parameters (enumeration values only) — never asked twice
+        say(intentOut, I.car);
+        var q = Object.keys(r.car || {}).map(function (k) {
+          return encodeURIComponent(k) + "=" + encodeURIComponent(r.car[k]);
+        }).join("&");
+        var ca = document.createElement("a");
+        ca.className = "cta";
+        ca.id = "car-route";
+        ca.href = (links.cars[T.lang] || links.cars.en) + (q ? "?" + q : "");
+        ca.textContent = I.carLink;
+        intentOut.appendChild(ca);
+        return;
+      }
       if (I.needs[r.scope]) return say(intentOut, I.outOfScope.replace("{x}", I.needs[r.scope]));
       intentOut.hidden = true;
       Object.keys(r.answers).forEach(function (name) {

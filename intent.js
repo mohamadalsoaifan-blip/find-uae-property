@@ -222,11 +222,157 @@
     return bands[4];
   }
 
+  // ---------------------------------------------------------------- cars: what the sentence states about the car
+  var CAR_WORDS = [
+    "car",
+    "cars",
+    "vehicle",
+    "suv",
+    "sedan",
+    "saloon",
+    "hatchback",
+    "pickup",
+    "pick up",
+    "pick-up",
+    "4x4",
+    "jeep",
+    "minivan",
+    "mpv",
+    "ev",
+    "toyota",
+    "nissan",
+    "hyundai",
+    "kia",
+    "lexus",
+    "honda",
+    "mitsubishi",
+    "ford",
+    "chevrolet",
+    "mazda",
+    "bmw",
+    "mercedes",
+    "audi",
+    "volkswagen",
+    "tesla",
+    "byd",
+    "mg",
+    "geely",
+    "chery",
+    "jetour",
+    "land cruiser",
+    "patrol",
+    "prado",
+    "camry",
+    "corolla",
+    "سياره",
+    "سيارات",
+    "عربيه",
+    "جيب",
+    "سيدان",
+    "بيك اب",
+    "دفع رباعي",
+    "تويوتا",
+    "نيسان",
+    "هيونداي",
+    "كيا",
+    "لكزس",
+    "هوندا",
+    "ميتسوبيشي",
+    "فورد",
+    "شيفروليه",
+    "مازدا",
+    "مرسيدس",
+    "تسلا",
+    "باترول",
+    "لاندكروزر",
+    "برادو",
+    "كامري",
+    "كورولا",
+  ];
+  var BODIES = [
+    ["suv", ["suv", "4x4", "jeep", "crossover", "land cruiser", "patrol", "prado", "جيب", "دفع رباعي", "باترول", "لاندكروزر", "برادو"]],
+    ["pickup", ["pickup", "pick up", "pick-up", "بيك اب", "بكب", "ونيت"]],
+    ["mpv", ["minivan", "mpv", "van", "people carrier", "فان", "باص"]],
+    ["sedan", ["sedan", "saloon", "camry", "corolla", "سيدان", "صالون", "كامري", "كورولا"]],
+    ["hatchback", ["hatchback", "هاتشباك"]],
+  ];
+  var CAR_CONDITION = [
+    ["used", ["used", "second hand", "second-hand", "pre-owned", "preowned", "مستعمل", "مستعمله", "استعمال"]],
+    ["new", ["new", "brand new", "zero km", "جديد", "جديده", "زيرو", "وكاله"]],
+  ];
+  var POWER = [
+    ["electric", ["electric", "ev", "bev", "كهربائي", "كهربائيه", "كهربا"]],
+    ["hybrid", ["hybrid", "plug-in", "phev", "هايبرد", "هجين", "هايبريد"]],
+    ["petrol", ["petrol", "gasoline", "بنزين"]],
+  ];
+  var CAR_PRIORITY = [
+    ["reliability", ["reliable", "reliability", "dependable", "موثوق", "موثوقه", "اعتماديه", "يعتمد عليها"]],
+    ["warranty", ["warranty", "ضمان"]],
+    ["economy", ["economical", "fuel efficient", "fuel economy", "cheap to run", "اقتصادي", "اقتصاديه", "توفير", "استهلاك"]],
+    ["space", ["spacious", "space", "big boot", "واسع", "واسعه", "مساحه"]],
+    ["performance", ["fast", "sporty", "performance", "powerful", "سريع", "سريعه", "رياضي", "رياضيه", "قوي", "قويه"]],
+  ];
+  var CAR_PAY = [
+    ["finance", ["finance", "financing", "loan", "installments", "instalments", "monthly", "تمويل", "قرض", "اقساط", "تقسيط", "شهري"]],
+    ["cash", ["cash", "كاش", "نقدا", "نقد"]],
+  ];
+  var CAR_EMIRATE = [
+    ["dubai", ["dubai", "dxb", "دبي"]],
+    ["abu_dhabi", ["abu dhabi", "abudhabi", "ابوظبي", "ابو ظبي"]],
+    ["sharjah", ["sharjah", "الشارقه"]],
+  ];
+  var USAGE = [
+    ["offroad", ["off-road", "offroad", "off road", "desert", "dunes", "صحراء", "الصحراء", "طلعات", "تطعيس", "البر"]],
+    ["highway", ["highway", "long distance", "commute between", "road trips", "طريق سريع", "مسافات طويله", "سفر"]],
+    ["city", ["city", "in town", "school run", "داخل المدينه", "المدينه", "مشاوير"]],
+  ];
+  var SEAT_WORD = { "خمس": 5, "خمسه": 5, "سبع": 7, "سبعه": 7, "ثمان": 8, "ثمانيه": 8, "ثماني": 8, "تسع": 9 };
+  function carSeats(t) {
+    var m = t.match(/(\d{1,2})\s*-?\s*(?:seater|seaters|seats|seat|passengers|مقاعد|مقعد|ركاب|راكب)/u) ||
+      t.match(/(خمس|خمسه|سبع|سبعه|ثمان|ثمانيه|ثماني|تسع)\s*(?:مقاعد|ركاب|راكب)/u);
+    if (!m) return null;
+    var n = SEAT_WORD[m[1]] || parseInt(m[1], 10);
+    if (!(n >= 2 && n <= 15)) return null;
+    return n <= 5 ? "up_to_5" : n <= 7 ? "seven" : "eight_plus";
+  }
+  function carBudget(t) {
+    var a = amountAed(t);
+    if (a == null) {
+      var k = t.match(/(\d{2,3})\s*(?:الف|ألف)/u);
+      var d = t.match(/(\d{4,7})\s*(?:aed|dhs|dh|درهم)/u) || t.match(/(?:aed|dhs|dh|درهم)\s*(\d{4,7})/u);
+      a = k ? parseInt(k[1], 10) * 1000 : d ? parseInt(d[1], 10) : null;
+    }
+    if (a == null || !(a >= 10000 && a <= 5e6)) return null;
+    var under = /(under|below|less than|up to|upto|max|maximum|within|not more than|اقل من|حتى|بحد اقصي|لا يزيد|تحت)/u.test(t);
+    var edges = [60000, 100000, 150000, 250000];
+    var bands = ["lt60k", "60to100k", "100to150k", "150to250k", "250kplus"];
+    for (var i = 0; i < edges.length; i++) {
+      if (a < edges[i] || (under && a === edges[i])) return bands[i];
+    }
+    return bands[4];
+  }
+  /** Car answers the sentence states (keys match the car questions); nothing is guessed. */
+  function parseCar(t) {
+    var a = {};
+    var v;
+    if ((v = first(t, BODIES))) a.body = v;
+    if ((v = carSeats(t))) a.seats = v;
+    if ((v = first(t, CAR_CONDITION))) a.condition = v;
+    if ((v = first(t, POWER))) a.powertrain = v;
+    if ((v = first(t, CAR_PRIORITY))) a.priority = v;
+    if ((v = first(t, USAGE))) a.usage = v;
+    if ((v = first(t, CAR_PAY))) a.payment = v;
+    if ((v = first(t, CAR_EMIRATE))) a.emirate = v;
+    if ((v = carBudget(t))) a.carBudget = v;
+    if ((v = first(t, TIMELINES)) && v !== "exploring") a.timeline = v;
+    return a;
+  }
+
   /**
    * @param {string} input the buyer's sentence
    * @param {string} [lang] "ar" shows the area name in Arabic
-   * @returns {{answers: Object, area: (string|null), scope: string, understood: string[]}}
-   *   scope: "property" | "rent" | an out-of-scope category | "unclear"
+   * @returns {{answers: Object, area: (string|null), scope: string, understood: string[], car: (Object|undefined)}}
+   *   scope: "property" | "car" | "rent" | an out-of-scope category | "unclear"; `car` holds the car answers
    */
   function parse(input, lang) {
     var t = norm(input);
@@ -249,6 +395,14 @@
     var payment = first(t, PAYMENTS);
     if (payment) a.payment = payment;
     var propertyWords = type || budget || has(t, ["property", "real estate", "home", "house", "عقار", "بيت", "منزل"]);
+    // a car sentence ("family SUV under AED 140K") is a car intent, even though it contains an amount
+    if (has(t, CAR_WORDS) && !type && !has(t, ["property", "real estate", "عقار"])) {
+      out.scope = "car";
+      out.answers = {};
+      out.car = parseCar(t);
+      out.understood = Object.keys(out.car);
+      return out;
+    }
     var rent = has(t, RENT) && !has(t, BUY);
     var other = first(t, OUT_OF_SCOPE);
     if (rent && propertyWords) out.scope = "rent";

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://piqprvgzgczrvcjvjrcv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>UAE car calculators: finance (flat vs reducing), running cost, electric vs petrol</title>
+<meta name="description" content="Free car calculators with your own numbers: monthly finance payment and true interest for flat or reducing rates, yearly running cost, and electric vs petrol. Calculated on your device; no sign-up.">
+<link rel="canonical" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/cars/calculators/">
+<link rel="alternate" hreflang="en" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/cars/calculators/">
+<link rel="alternate" hreflang="ar" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/cars/calculators/">
+<link rel="alternate" hreflang="x-default" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/cars/calculators/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UAE car calculators: finance (flat vs reducing), running cost, electric vs petrol">
+<meta property="og:description" content="Free car calculators with your own numbers: monthly finance payment and true interest for flat or reducing rates, yearly running cost, and electric vs petrol. Calculated on your device; no sign-up.">
+<meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/cars/calculators/">
+<meta property="og:locale" content="en_AE">
+<meta property="og:image" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dubai skyline and the Burj Khalifa at sunset">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#071a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Car calculators","description":"Free car calculators with your own numbers: monthly finance payment and true interest for flat or reducing rates, yearly running cost, and electric vs petrol. Calculated on your device; no sign-up.","inLanguage":"en","url":"https://mohamadalsoaifan-blip.github.io/find-uae-property/cars/calculators/"}</script>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../">Find Your UAE Property</a>
+  <nav class="top-nav">
+    <a href="../../cars/">Cars</a>
+    <a href="../../tools/">Buyer calculators</a>
+    <a href="../../compare/">Compare the properties you found</a>
+  </nav>
+  <a class="lang" href="../../ar/cars/calculators/" hreflang="ar" lang="ar">العربية</a>
+</header>
+<main>
+<section class="hero">
+<nav class="crumbs" aria-label="breadcrumb"><a href="../../">Find Your UAE Property</a> › <a href="../../cars/">Which car fits you?</a> › <span>Car calculators</span></nav>
+  <h1>Car calculators</h1>
+  <p class="lead">Every number here is yours: we build in no price, fee, insurance premium, fuel price or interest rate, because they change and differ by car and provider. Everything is calculated on your device.</p>
+</section>
+<section class="card tool" id="car-fin" aria-labelledby="f-h">
+  <h2 id="f-h">1. Car finance: what will I really pay?</h2>
+  <p class="hint">The same rate costs more when it is FLAT (interest on the full amount for the whole term) than when it is REDUCING.</p>
+  <label class="field"><span>Car price (AED)</span><input id="f-price" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Down payment (AED)</span><input id="f-down" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Interest rate offered (% per year)</span><input id="f-rate" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">From the bank or dealer&#39;s written offer.</small></label>
+  <label class="field"><span>Term (months)</span><input id="f-months" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <fieldset class="seg"><legend>How is the rate quoted?</legend>
+    <label><input type="radio" name="f-method" value="flat" checked><span>Flat rate</span></label>
+    <label><input type="radio" name="f-method" value="reducing"><span>Reducing rate</span></label>
+  </fieldset>
+  <div class="result" id="f-out" aria-live="polite"></div>
+</section>
+<section class="card tool" id="car-own" aria-labelledby="o-h">
+  <h2 id="o-h">2. What does the car cost me per year?</h2>
+  <p class="hint">Fuel plus the yearly costs you enter. Add the price and an expected resale value to include depreciation.</p>
+  <label class="field"><span>Kilometres per year</span><input id="o-km" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Fuel use (litres per 100 km)</span><input id="o-l100" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Fuel price (AED per litre)</span><input id="o-fuel" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">Use this month&#39;s official price for the fuel grade you use.</small></label>
+  <label class="field"><span>Insurance per year (AED)</span><input id="o-ins" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Registration renewal per year (AED)</span><input id="o-reg" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Servicing and tyres per year (AED)</span><input id="o-maint" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Other yearly costs (AED) — parking, Salik, cleaning</span><input id="o-other" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Car price (AED, optional)</span><input id="o-price" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Expected resale value (AED, optional)</span><input id="o-resale" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Years you will keep it (optional)</span><input id="o-years" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">Depreciation is counted only when you enter all three.</small></label>
+  <div class="result" id="o-out" aria-live="polite"></div>
+</section>
+<section class="card tool" id="car-ev" aria-labelledby="e-h">
+  <h2 id="e-h">3. Electric vs petrol: which is cheaper to run?</h2>
+  <p class="hint">Same yearly distance, your own consumption and energy prices.</p>
+  <label class="field"><span>Kilometres per year</span><input id="e-km" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Petrol car: litres per 100 km</span><input id="e-pl" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Petrol price (AED per litre)</span><input id="e-pp" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Electric car: kWh per 100 km</span><input id="e-ek" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Electricity price (AED per kWh)</span><input id="e-kp" inputmode="decimal" autocomplete="off" dir="ltr" value=""><small class="hint">Your home tariff or the public charger price you will use most.</small></label>
+  <label class="field"><span>Petrol car: servicing per year (AED)</span><input id="e-pm" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Electric car: servicing per year (AED)</span><input id="e-em" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Petrol car price (AED, optional)</span><input id="e-pc" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <label class="field"><span>Electric car price (AED, optional)</span><input id="e-ec" inputmode="decimal" autocomplete="off" dir="ltr" value=""></label>
+  <div class="result" id="e-out" aria-live="polite"></div>
+</section>
+<section class="card">
+  <ul class="check"><li>These are estimates from your inputs, not offers. A dealer, bank or insurer must confirm the real figures in writing.</li><li>Car finance rules, fees and prices change; check them with the provider before you sign.</li></ul>
+  <p><a href="../../cars/">Not sure which car fits? Use the car guide</a></p>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-brand">Find Your UAE Property</p>
+  <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
+  <p><a href="../../about/">About &amp; how we work</a> · <a href="../../privacy/">Privacy</a> · <a href="../../tools/">Buyer calculators</a></p>
+</footer>
+<script type="application/json" id="t">{"lang":"en","money":"AED","years":"years","need":"Fill in the fields above to see the result.","finance":{"h":"1. Car finance: what will I really pay?","lead":"The same rate costs more when it is FLAT (interest on the full amount for the whole term) than when it is REDUCING.","price":"Car price (AED)","down":"Down payment (AED)","rate":"Interest rate offered (% per year)","rateHint":"From the bank or dealer's written offer.","months":"Term (months)","method":"How is the rate quoted?","flat":"Flat rate","reducing":"Reducing rate","financed":"Amount financed","monthly":"Monthly payment","interest":"Total interest","total":"Total you pay (incl. down payment)","equiv":"This flat rate equals a reducing rate of about"},"own":{"h":"2. What does the car cost me per year?","lead":"Fuel plus the yearly costs you enter. Add the price and an expected resale value to include depreciation.","km":"Kilometres per year","l100":"Fuel use (litres per 100 km)","fuel":"Fuel price (AED per litre)","fuelHint":"Use this month's official price for the fuel grade you use.","insurance":"Insurance per year (AED)","registration":"Registration renewal per year (AED)","maintenance":"Servicing and tyres per year (AED)","other":"Other yearly costs (AED) — parking, Salik, cleaning","price":"Car price (AED, optional)","resale":"Expected resale value (AED, optional)","years":"Years you will keep it (optional)","depHint":"Depreciation is counted only when you enter all three.","fuelYear":"Fuel per year","fixedYear":"Other costs per year","depYear":"Depreciation per year","annual":"Total per year","monthly":"Per month","perKm":"Per kilometre"},"ev":{"h":"3. Electric vs petrol: which is cheaper to run?","lead":"Same yearly distance, your own consumption and energy prices.","km":"Kilometres per year","pl100":"Petrol car: litres per 100 km","pprice":"Petrol price (AED per litre)","ekwh":"Electric car: kWh per 100 km","kprice":"Electricity price (AED per kWh)","kpriceHint":"Your home tariff or the public charger price you will use most.","pmaint":"Petrol car: servicing per year (AED)","emaint":"Electric car: servicing per year (AED)","pcar":"Petrol car price (AED, optional)","ecar":"Electric car price (AED, optional)","petrolYear":"Petrol car per year","evYear":"Electric car per year","saving":"Electric saves per year","costsMore":"Electric costs more per year","payback":"The extra price is paid back in about","noPayback":"No payback: the electric car does not cost more, or does not save money, with these numbers."}}</script>
+<script src="../../config.js"></script>
+<script src="../../page-common.js"></script>
+<script src="../../car-tools.js"></script>
+<script src="../../car-tools-page.js"></script>
+</body>
+</html>
