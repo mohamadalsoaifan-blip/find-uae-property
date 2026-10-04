@@ -1924,3 +1924,61 @@ h3 {
 [dir="rtl"] .guide-link .ico-arrow {
   transform: scaleX(-1);
 }
+
+/* compare: needs box + fit with the buyer's own criteria */
+.needs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0 var(--sp-3);
+}
+.fit-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: var(--sp-3);
+  margin: var(--sp-2) 0;
+}
+.fit-head {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-2);
+}
+.fit-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--soft);
+  overflow: hidden;
+}
+.fit-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.fit-reasons {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-2) 0 0;
+  font-size: var(--fs-sm);
+  display: grid;
+  gap: 2px;
+}
+.fit-mark {
+  display: inline-block;
+  width: 1.2em;
+  font-weight: 700;
+  text-align: center;
+}
+.fit-ok .fit-mark {
+  color: var(--ok);
+}
+.fit-no .fit-mark {
+  color: var(--error);
+}
+.fit-part .fit-mark,
+.fit-unknown .fit-mark {
+  color: var(--muted);
+}
+/* workspace summary is drawn by workspace-page.js: reserve the empty-state height (~420 px) so the page does not jump */
+.ws-out:empty {
+  min-height: 420px;
+}

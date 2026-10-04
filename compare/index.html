@@ -54,12 +54,28 @@
   </fieldset>
   <label class="field"><span>Agency commission (%) — your assumption</span><input id="cmp-agency" inputmode="decimal" autocomplete="off" dir="ltr"></label>
 </section>
+<section class="card cmp-needs" aria-labelledby="needs-h">
+  <h2 id="needs-h">Your needs (optional)</h2>
+  <p class="hint">Fill in what matters to you and each option gets a fit score with the reasons. Leave a box empty to ignore it.</p>
+  <div class="needs-grid">
+  <label class="field"><span>Maximum price (AED)</span><input id="need-maxBudget" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  <label class="field"><span>Cash you have for the purchase (AED)</span><input id="need-cash" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  <label class="field"><span>Bedrooms, at least</span><input id="need-minBedrooms" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  </div>
+  <fieldset class="seg"><legend>Ready or off-plan?</legend>
+    <label><input type="radio" name="need-status" value="" checked><span>Either</span></label>
+    <label><input type="radio" name="need-status" value="ready"><span>Ready</span></label>
+    <label><input type="radio" name="need-status" value="offplan"><span>Off-plan</span></label>
+  </fieldset>
+</section>
 <div id="cmp-options" class="cmp-options"></div>
 <p class="cmp-actions"><button type="button" id="cmp-add" class="ghost">+ Add another option</button> <button type="button" id="cmp-clear" class="ghost">Clear all</button></p>
 <section class="card" aria-labelledby="cmp-h">
   <h2 id="cmp-h">Side by side</h2>
+  <div id="cmp-fit" aria-live="polite"></div>
   <div id="cmp-out" aria-live="polite"></div>
   <ul class="check"><li>Lowest or highest is not &#39;best&#39;: a cheaper price per sq ft can mean an older building or a weaker location.</li><li>Ask for the service charge in writing and a real signed lease before trusting any yield.</li><li>For off-plan, compare the payment plan and the handover date in the contract, not only the price.</li></ul>
+  <p class="note">The fit score is a fixed rule on your own criteria: budget 35, cash 35, bedrooms 20, ready/off-plan 10, counting only what both you and the option have filled in. It is not a recommendation or a judgement of value.</p>
 </section>
 <section class="card">
   <p>We carry your budget over; the options themselves stay on your device.</p>
@@ -72,7 +88,7 @@
   <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
   <p><a href="../workspace/">My decisions</a> · <a href="../about/">About &amp; how we work</a> · <a href="../trust/">Trust Center</a> · <a href="../privacy/">Privacy</a> · <a href="../tools/">Buyer calculators</a></p>
 </footer>
-<script type="application/json" id="t">{"lang":"en","money":"AED","option":"Option {n}","fields":{"label":"Name (for you)","price":"Price (AED)","sizeSqft":"Size (sq ft)","bedrooms":"Bedrooms","status":"Ready or off-plan","serviceChargePerSqft":"Service charge (AED per sq ft per year)","annualRent":"Annual rent you have seen (AED)"},"labelHint":"e.g. Marina 1BR, tower name","ready":"Ready","offplan":"Off-plan","unknown":"Not sure","remove":"Remove","needTwo":"Enter the price of at least two options to compare them.","metrics":{"price":"Price","upfront":"Cash needed upfront (incl. 4% DLD fee)","pricePerSqft":"Price per sq ft","serviceCharges":"Service charges per year","grossYieldPct":"Gross rental yield","netYieldPct":"Net yield after service charges"},"lowest":"lowest","highest":"highest","notGiven":"not given","diff":"{dearer} costs {gap} more than {cheaper}; the cash needed upfront differs by {upfront}."}</script>
+<script type="application/json" id="t">{"lang":"en","money":"AED","option":"Option {n}","fields":{"label":"Name (for you)","price":"Price (AED)","sizeSqft":"Size (sq ft)","bedrooms":"Bedrooms","status":"Ready or off-plan","serviceChargePerSqft":"Service charge (AED per sq ft per year)","annualRent":"Annual rent you have seen (AED)"},"labelHint":"e.g. Marina 1BR, tower name","ready":"Ready","offplan":"Off-plan","unknown":"Not sure","remove":"Remove","needTwo":"Enter the price of at least two options to compare them.","metrics":{"price":"Price","upfront":"Cash needed upfront (incl. 4% DLD fee)","pricePerSqft":"Price per sq ft","serviceCharges":"Service charges per year","grossYieldPct":"Gross rental yield","netYieldPct":"Net yield after service charges"},"lowest":"lowest","highest":"highest","notGiven":"not given","diff":"{dearer} costs {gap} more than {cheaper}; the cash needed upfront differs by {upfront}.","fitH":"How each option fits your needs","fitLine":"{score}% fit · {n} of your criteria","fitNone":"Fill in at least one need above to see how each option fits.","reasons":{"budget":{"ok":"Within your budget","part":"{gap} over your budget (within 10%)","no":"{gap} over your budget"},"cash":{"ok":"Your cash covers the upfront cost","no":"Needs {gap} more cash upfront"},"bedrooms":{"ok":"Enough bedrooms","no":"Fewer bedrooms than you need","unknown":"Bedrooms not given"},"status":{"ok":"Matches ready / off-plan","no":"Not the ready / off-plan you want","unknown":"Ready / off-plan not given"}}}</script>
 <script src="../config.js"></script>
 <script src="../tools.js"></script>
 <script src="../compare.js"></script>

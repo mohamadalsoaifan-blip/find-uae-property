@@ -18,10 +18,15 @@
     try {
       var d = JSON.parse(localStorage.getItem(KEY) || "null");
       if (d && Array.isArray(d.options)) {
-        return { options: d.options.slice(0, C.MAX_OPTIONS).map(C.clean), mortgage: !!d.mortgage, agencyPct: d.agencyPct || "" };
+        return {
+          options: d.options.slice(0, C.MAX_OPTIONS).map(C.clean),
+          mortgage: !!d.mortgage,
+          agencyPct: d.agencyPct || "",
+          needs: d.needs || {}, // added later: older saved data simply has no needs
+        };
       }
     } catch (_) { /* private mode or corrupt: start fresh */ }
-    return { options: [C.clean({}), C.clean({})], mortgage: false, agencyPct: "" };
+    return { options: [C.clean({}), C.clean({})], mortgage: false, agencyPct: "", needs: {} };
   }
   var state = load();
   function save() {
@@ -125,9 +130,10 @@
   var ctaBase = cta ? cta.getAttribute("href").replace(/#.*$/, "") : "";
   function renderResults() {
     out.textContent = "";
-    var r = C.compare(state.options, { mortgage: state.mortgage, agencyPct: state.agencyPct }, P);
+    var r = C.compare(state.options, { mortgage: state.mortgage, agencyPct: state.agencyPct }, P, state.needs);
     var rows = r.rows;
     var priced = rows.filter(Boolean);
+    renderFit(rows);
     if (priced.length < 2) {
       out.appendChild(el("p", "hint", T.needTwo));
       return;
@@ -172,6 +178,47 @@
     if (cta && band) cta.setAttribute("href", ctaBase + "?budget=" + band + "&payment=" + (state.mortgage ? "mortgage" : "cash") + "#find");
   }
 
+  // ---------------------------------------------------------------- fit with the buyer's needs
+  var fitBox = document.getElementById("cmp-fit");
+  var MARK = { ok: "✓", part: "~", no: "✗", unknown: "?" };
+  function renderFit(rows) {
+    if (!fitBox) return;
+    fitBox.textContent = "";
+    var scored = rows.filter(function (row) {
+      return row && row.fit;
+    });
+    if (!rows.some(Boolean)) return;
+    if (!scored.length) {
+      fitBox.appendChild(el("p", "hint", T.fitNone));
+      return;
+    }
+    fitBox.appendChild(el("h3", null, T.fitH));
+    rows.forEach(function (row, i) {
+      if (!row || !row.fit) return;
+      var f = row.fit;
+      var card = el("div", "fit-card");
+      var head = el("p", "fit-head");
+      head.appendChild(el("span", null, name(row.option, i)));
+      head.appendChild(el("b", null, T.fitLine.replace("{score}", f.score).replace("{n}", f.basis)));
+      card.appendChild(head);
+      var bar = el("div", "fit-bar");
+      var fill = el("span");
+      fill.style.width = f.score + "%";
+      bar.appendChild(fill);
+      card.appendChild(bar);
+      var ul = el("ul", "fit-reasons");
+      f.reasons.forEach(function (x) {
+        var txt = (T.reasons[x.k][x.s] || "").replace("{gap}", x.gap != null ? T.money + " " + nf.format(x.gap) : "");
+        var li = el("li", "fit-" + x.s);
+        li.appendChild(el("span", "fit-mark", MARK[x.s]));
+        li.appendChild(document.createTextNode(" " + txt));
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+      fitBox.appendChild(card);
+    });
+  }
+
   // ---------------------------------------------------------------- events
   box.addEventListener("input", function (e) {
     var t = e.target, i = Number(t.getAttribute("data-i")), k = t.getAttribute("data-k");
@@ -206,7 +253,7 @@
     if (last.length) last[last.length - 1].focus();
   });
   document.getElementById("cmp-clear").addEventListener("click", function () {
-    state = { options: [C.clean({}), C.clean({})], mortgage: state.mortgage, agencyPct: state.agencyPct };
+    state = { options: [C.clean({}), C.clean({})], mortgage: state.mortgage, agencyPct: state.agencyPct, needs: state.needs };
     save();
     renderInputs();
     renderResults();
@@ -225,6 +272,26 @@
     state.agencyPct = ag.value;
     save();
     renderResults();
+  });
+
+  ["maxBudget", "cash", "minBedrooms"].forEach(function (k) {
+    var inp = document.getElementById("need-" + k);
+    if (!inp) return;
+    inp.value = state.needs[k] || "";
+    inp.addEventListener("input", function () {
+      state.needs[k] = inp.value;
+      save();
+      renderResults();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("input[name=need-status]"), function (r) {
+    r.checked = (state.needs.status || "") === r.value;
+    r.addEventListener("change", function () {
+      if (!r.checked) return;
+      state.needs.status = r.value || null;
+      save();
+      renderResults();
+    });
   });
 
   renderInputs();

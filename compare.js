@@ -109,14 +109,74 @@
     };
   }
 
-  function compare(options, financing, tools) {
+  // ---------------------------------------------------------------- fit with the buyer's own needs
+  // A published, fixed rule — not a recommendation: each criterion counts only when the buyer gave the need AND the
+  // option has the value; the score is the share of those criteria met. No market data, no yield judgement (that
+  // would be investment advice), and nothing about commissions.
+  var FIT_WEIGHTS = { budget: 35, cash: 35, bedrooms: 20, status: 10 };
+  var BUDGET_TOLERANCE = 0.1; // up to 10% over the stated budget earns half the budget points, with the gap shown
+
+  function cleanNeeds(n) {
+    n = n || {};
+    return {
+      maxBudget: num(n.maxBudget),
+      cash: num(n.cash),
+      minBedrooms: num(n.minBedrooms),
+      status: n.status === "ready" || n.status === "offplan" ? n.status : null,
+    };
+  }
+
+  /** @returns {{score:number, basis:number, reasons:{k:string, s:"ok"|"part"|"no"|"unknown", gap?:number}[]}|null} */
+  function fit(row, needs) {
+    if (!row) return null;
+    var n = cleanNeeds(needs), o = row.option, r = row.result;
+    var earned = 0, possible = 0, reasons = [];
+    function add(k, s, gap) {
+      var w = FIT_WEIGHTS[k];
+      if (s === "unknown") {
+        reasons.push({ k: k, s: s });
+        return;
+      }
+      possible += w;
+      earned += s === "ok" ? w : s === "part" ? w / 2 : 0;
+      reasons.push(gap != null ? { k: k, s: s, gap: gap } : { k: k, s: s });
+    }
+    if (n.maxBudget) {
+      if (o.price <= n.maxBudget) add("budget", "ok");
+      else add("budget", o.price <= n.maxBudget * (1 + BUDGET_TOLERANCE) ? "part" : "no", o.price - n.maxBudget);
+    }
+    if (n.cash) add("cash", r.upfront <= n.cash ? "ok" : "no", r.upfront <= n.cash ? undefined : r.upfront - n.cash);
+    if (n.minBedrooms != null) add("bedrooms", o.bedrooms == null ? "unknown" : o.bedrooms >= n.minBedrooms ? "ok" : "no");
+    if (n.status) add("status", o.status == null ? "unknown" : o.status === n.status ? "ok" : "no");
+    if (!possible) return null;
+    return {
+      score: Math.round((100 * earned) / possible),
+      basis: reasons.filter(function (x) {
+        return x.s !== "unknown";
+      }).length,
+      reasons: reasons,
+    };
+  }
+
+  function compare(options, financing, tools, needs) {
     var list = (options || []).slice(0, MAX_OPTIONS).map(clean);
     var rows = list.map(function (o) {
       var r = evaluate(o, financing || {}, tools);
       return r ? { option: o, result: r } : null;
     });
+    rows.forEach(function (row) {
+      if (row) row.fit = fit(row, needs);
+    });
     return { rows: rows, highlights: highlights(rows), differences: differences(rows) };
   }
 
-  root.PLHCompare = { MAX_OPTIONS: MAX_OPTIONS, clean: clean, compare: compare, round1: round1 };
+  root.PLHCompare = {
+    MAX_OPTIONS: MAX_OPTIONS,
+    FIT_WEIGHTS: FIT_WEIGHTS,
+    clean: clean,
+    cleanNeeds: cleanNeeds,
+    fit: fit,
+    compare: compare,
+    round1: round1,
+  };
 })(typeof globalThis !== "undefined" ? globalThis : window);

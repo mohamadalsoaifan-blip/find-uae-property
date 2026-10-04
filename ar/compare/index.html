@@ -55,12 +55,28 @@
   </fieldset>
   <label class="field"><span>عمولة الوسيط (%) — افتراضك أنت</span><input id="cmp-agency" inputmode="decimal" autocomplete="off" dir="ltr"></label>
 </section>
+<section class="card cmp-needs" aria-labelledby="needs-h">
+  <h2 id="needs-h">احتياجاتك (اختياري)</h2>
+  <p class="hint">اكتب ما يهمك، فيحصل كل خيار على نسبة تطابق مع الأسباب. اترك أي خانة فارغة لتجاهلها.</p>
+  <div class="needs-grid">
+  <label class="field"><span>أقصى سعر (درهم)</span><input id="need-maxBudget" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  <label class="field"><span>المبلغ النقدي المتاح للشراء (درهم)</span><input id="need-cash" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  <label class="field"><span>عدد الغرف، على الأقل</span><input id="need-minBedrooms" inputmode="numeric" autocomplete="off" dir="ltr"></label>
+  </div>
+  <fieldset class="seg"><legend>جاهز أم على الخارطة؟</legend>
+    <label><input type="radio" name="need-status" value="" checked><span>لا يهم</span></label>
+    <label><input type="radio" name="need-status" value="ready"><span>جاهز</span></label>
+    <label><input type="radio" name="need-status" value="offplan"><span>على الخارطة</span></label>
+  </fieldset>
+</section>
 <div id="cmp-options" class="cmp-options"></div>
 <p class="cmp-actions"><button type="button" id="cmp-add" class="ghost">+ أضف خيارًا آخر</button> <button type="button" id="cmp-clear" class="ghost">مسح الكل</button></p>
 <section class="card" aria-labelledby="cmp-h">
   <h2 id="cmp-h">جنبًا إلى جنب</h2>
+  <div id="cmp-fit" aria-live="polite"></div>
   <div id="cmp-out" aria-live="polite"></div>
   <ul class="check"><li>الأقل أو الأعلى لا يعني «الأفضل»: سعر قدم أقل قد يعني مبنى أقدم أو موقعًا أضعف.</li><li>اطلب رسوم الخدمات مكتوبة وعقد إيجار حقيقيًا موقّعًا قبل أن تثق بأي عائد.</li><li>في العقارات على الخارطة، قارن خطة الدفع وتاريخ التسليم في العقد، لا السعر فقط.</li></ul>
+  <p class="note">نسبة التطابق قاعدة ثابتة على معاييرك أنت: الميزانية 35، النقد 35، الغرف 20، جاهز/على الخارطة 10، ولا يُحتسب إلا ما أدخلته أنت وما هو معروف عن الخيار. ليست توصية ولا حكمًا على قيمة العقار.</p>
 </section>
 <section class="card">
   <p>ننقل ميزانيتك فقط؛ أما الخيارات نفسها فتبقى على جهازك.</p>
@@ -73,7 +89,7 @@
   <p>خدمة تعريف فقط — لسنا وسيطًا عقاريًا. لا نعد بأسعار أو توفر أو عوائد. تحقّق دائمًا من ترخيص المستشار.</p>
   <p><a href="../../ar/workspace/">قراراتي</a> · <a href="../../ar/about/">من نحن وكيف نعمل</a> · <a href="../../ar/trust/">مركز الثقة</a> · <a href="../../ar/privacy/">الخصوصية</a> · <a href="../../ar/tools/">حاسبات المشتري</a></p>
 </footer>
-<script type="application/json" id="t">{"lang":"ar","money":"درهم","option":"الخيار {n}","fields":{"label":"اسم الخيار (لك أنت)","price":"السعر (درهم)","sizeSqft":"المساحة (قدم مربع)","bedrooms":"عدد الغرف","status":"جاهز أم على الخارطة","serviceChargePerSqft":"رسوم الخدمات (درهم لكل قدم مربع سنويًا)","annualRent":"إيجار سنوي اطلعت عليه (درهم)"},"labelHint":"مثال: مارينا غرفة واحدة، اسم البرج","ready":"جاهز","offplan":"على الخارطة","unknown":"لا أعرف","remove":"حذف","needTwo":"أدخل سعر خيارين على الأقل لمقارنتهما.","metrics":{"price":"السعر","upfront":"المبلغ النقدي المطلوب مقدمًا (يشمل رسوم الأراضي 4%)","pricePerSqft":"سعر القدم المربع","serviceCharges":"رسوم الخدمات سنويًا","grossYieldPct":"العائد الإيجاري الإجمالي","netYieldPct":"العائد الصافي بعد رسوم الخدمات"},"lowest":"الأقل","highest":"الأعلى","notGiven":"غير مُدخل","diff":"{dearer} أغلى من {cheaper} بمبلغ {gap}؛ والفرق في المبلغ النقدي المطلوب مقدمًا {upfront}."}</script>
+<script type="application/json" id="t">{"lang":"ar","money":"درهم","option":"الخيار {n}","fields":{"label":"اسم الخيار (لك أنت)","price":"السعر (درهم)","sizeSqft":"المساحة (قدم مربع)","bedrooms":"عدد الغرف","status":"جاهز أم على الخارطة","serviceChargePerSqft":"رسوم الخدمات (درهم لكل قدم مربع سنويًا)","annualRent":"إيجار سنوي اطلعت عليه (درهم)"},"labelHint":"مثال: مارينا غرفة واحدة، اسم البرج","ready":"جاهز","offplan":"على الخارطة","unknown":"لا أعرف","remove":"حذف","needTwo":"أدخل سعر خيارين على الأقل لمقارنتهما.","metrics":{"price":"السعر","upfront":"المبلغ النقدي المطلوب مقدمًا (يشمل رسوم الأراضي 4%)","pricePerSqft":"سعر القدم المربع","serviceCharges":"رسوم الخدمات سنويًا","grossYieldPct":"العائد الإيجاري الإجمالي","netYieldPct":"العائد الصافي بعد رسوم الخدمات"},"lowest":"الأقل","highest":"الأعلى","notGiven":"غير مُدخل","diff":"{dearer} أغلى من {cheaper} بمبلغ {gap}؛ والفرق في المبلغ النقدي المطلوب مقدمًا {upfront}.","fitH":"مدى تطابق كل خيار مع احتياجاتك","fitLine":"تطابق {score}% · {n} من معاييرك","fitNone":"اكتب احتياجًا واحدًا على الأقل في الأعلى لترى مدى تطابق كل خيار.","reasons":{"budget":{"ok":"ضمن ميزانيتك","part":"أعلى من ميزانيتك بـ {gap} (في حدود 10%)","no":"أعلى من ميزانيتك بـ {gap}"},"cash":{"ok":"نقدك يغطي المبلغ المطلوب مقدمًا","no":"يحتاج {gap} نقدًا إضافيًا مقدمًا"},"bedrooms":{"ok":"عدد الغرف كافٍ","no":"غرف أقل مما تحتاج","unknown":"عدد الغرف غير مذكور"},"status":{"ok":"يطابق جاهز/على الخارطة","no":"ليس جاهز/على الخارطة كما تريد","unknown":"جاهز/على الخارطة غير مذكور"}}}</script>
 <script src="../../config.js"></script>
 <script src="../../tools.js"></script>
 <script src="../../compare.js"></script>
