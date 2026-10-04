@@ -17,9 +17,12 @@
     var x = Number(raw);
     return isFinite(x) ? x : undefined;
   }
+  // every car result is our arithmetic on the person's own numbers → the headline rows carry the "estimated" badge
   function row(box, label, value, strong) {
     var p = ctx.el("p", strong ? "res total" : "res");
-    p.appendChild(ctx.el("span", null, label));
+    var a = ctx.el("span", null, label);
+    if (strong && T.kinds) a.appendChild(ctx.el("small", "kind kind-estimated", T.kinds.estimated));
+    p.appendChild(a);
     p.appendChild(ctx.el("b", null, value));
     box.appendChild(p);
   }

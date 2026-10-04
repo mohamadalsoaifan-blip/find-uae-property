@@ -19,11 +19,18 @@
     var el = document.getElementById(id);
     return el ? el.value : "";
   }
-  function row(box, label, value, strong) {
+  // kind: "verified" (official published rule) | "estimated" (our arithmetic) | "input" (the person's own number)
+  function row(box, label, value, strong, kind) {
     var p = document.createElement("p");
     p.className = strong ? "res total" : "res";
     var a = document.createElement("span");
     a.textContent = label;
+    if (kind && T.kinds && T.kinds[kind]) {
+      var k = document.createElement("small");
+      k.className = "kind kind-" + kind;
+      k.textContent = T.kinds[kind];
+      a.appendChild(k);
+    }
     var b = document.createElement("b");
     b.textContent = value;
     p.appendChild(a);
@@ -88,11 +95,12 @@
       box.appendChild(p);
       return;
     }
-    if (mortgage()) row(box, T.out.loan + " (" + r.ltvPct + "%)", money(r.loan));
+    var KIND = { downPayment: "estimated", dldFee: "verified", agencyFee: "input", mortgageRegistration: "input", otherFees: "input" };
+    if (mortgage()) row(box, T.out.loan + " (" + r.ltvPct + "%)", money(r.loan), false, "estimated");
     ["downPayment", "dldFee", "agencyFee", "mortgageRegistration", "otherFees"].forEach(function (k) {
-      if (r.parts[k] || k === "downPayment" || k === "dldFee") row(box, T.out[k], money(r.parts[k]));
+      if (r.parts[k] || k === "downPayment" || k === "dldFee") row(box, T.out[k], money(r.parts[k]), false, KIND[k]);
     });
-    row(box, T.out.total, money(r.total), true);
+    row(box, T.out.total, money(r.total), true, "estimated");
     setBudget(r.price);
     track("cost");
   }
@@ -111,7 +119,7 @@
     });
     if (!m) return;
     var line = mortgage() ? " — " + T.outLtv + " " + m.ltvPct + "%" : "";
-    row(box, box.getAttribute("data-label"), money(m.maxPrice) + line, true);
+    row(box, box.getAttribute("data-label"), money(m.maxPrice) + line, true, "estimated");
     setBudget(m.maxPrice);
     track("afford");
     if (mortgage()) {
@@ -120,7 +128,7 @@
         ratePct: v("a-rate") === "" ? null : v("a-rate"),
         years: v("a-years"),
       });
-      if (mp != null) row(pay, pay.getAttribute("data-label"), money(mp));
+      if (mp != null) row(pay, pay.getAttribute("data-label"), money(mp), false, "estimated");
     }
   }
   function renderYield() {
@@ -129,7 +137,7 @@
     var r = P.rentalYield({ price: v("y-price"), annualRent: v("y-rent"), annualCosts: v("y-costs") });
     if (!r) return;
     row(box, box.getAttribute("data-gross"), r.grossPct + "%");
-    row(box, box.getAttribute("data-net"), r.netPct + "%", true);
+    row(box, box.getAttribute("data-net"), r.netPct + "%", true, "estimated");
     row(box, box.getAttribute("data-income"), money(r.netIncome));
     track("yield");
   }

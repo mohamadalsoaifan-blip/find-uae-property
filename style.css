@@ -1840,3 +1840,43 @@ h3 {
     color: #f3dfae;
   }
 }
+
+/* data-kind badges on calculator results (meaning: Trust Center → data labels) */
+.res .kind {
+  display: inline-block;
+  margin-inline-start: var(--sp-2);
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  vertical-align: middle;
+  background: var(--soft);
+  color: var(--accent);
+}
+.res .kind-verified {
+  background: #e6f4ea;
+  color: var(--ok);
+}
+.res .kind-input {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.kinds-link {
+  margin: var(--sp-2) 0 0;
+  font-size: var(--fs-xs);
+}
+@media (prefers-color-scheme: dark) {
+  .res .kind-verified {
+    background: #12301c;
+  }
+}
+
+/* privacy page: one-tap rights requests */
+.rights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-2);
+  margin: var(--sp-3) 0;
+}
