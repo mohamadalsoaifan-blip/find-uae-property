@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://piqprvgzgczrvcjvjrcv.supabase.co; font-src 'self'; connect-src https://piqprvgzgczrvcjvjrcv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" href="../fonts/plex-arabic-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/plex-arabic-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+<title>Your account — sell your car</title>
+<meta name="description" content="Sign in with your e-mail to list your car. Every listing is checked by a person before anyone can see it.">
+<link rel="canonical" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<link rel="alternate" hreflang="en" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<link rel="alternate" hreflang="ar" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/account/">
+<link rel="alternate" hreflang="x-default" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your account — sell your car">
+<meta property="og:description" content="Sign in with your e-mail to list your car. Every listing is checked by a person before anyone can see it.">
+<meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<meta property="og:locale" content="en_AE">
+<meta property="og:image" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dubai skyline and the Burj Khalifa at sunset">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#071a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+
+<meta name="robots" content="noindex">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../">Find Your UAE Property</a>
+  <nav class="top-nav">
+    <a href="../cars/">Cars</a>
+    <a href="../tools/">Calculators</a>
+    <a href="../compare/">Compare</a>
+    <a href="../workspace/">My decisions</a>
+  </nav>
+  <a class="lang" href="../ar/account/" hreflang="ar" lang="ar">العربية</a>
+</header>
+<main class="account">
+<section class="hero">
+  <h1>Your account</h1>
+  <p class="lead">Sign in with your e-mail to list your car. Every listing is checked by a person before anyone can see it.</p>
+</section>
+<p id="ac-status" class="note" role="status" aria-live="polite">Loading…</p>
+
+<section id="ac-signin" class="card" hidden>
+  <h2>Sign in or create an account</h2>
+  <form id="ac-email-form" novalidate>
+    <label class="field" for="ac-email"><span>E-mail</span><input type="email" id="ac-email" autocomplete="email" inputmode="email" maxlength="254" required></label>
+    <button type="submit" id="ac-send">Send me a code</button>
+  </form>
+  <form id="ac-code-form" hidden novalidate>
+    <p id="ac-sent" class="hint"></p>
+    <label class="field" for="ac-code"><span>Code from the e-mail</span><input type="text" id="ac-code" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]{6,10}" maxlength="10" required></label>
+    <button type="submit" id="ac-verify">Sign in</button>
+    <button type="button" id="ac-again" class="ghost small">Use another e-mail</button>
+  </form>
+  <p class="note">No password. We never ask for your bank details, card, Emirates ID or passwords here.</p>
+</section>
+
+<div id="ac-in" hidden>
+<section class="card">
+  <p><span id="ac-who"></span> · <button type="button" id="ac-out" class="ghost small">Sign out</button></p>
+  <h2>Profile</h2>
+  <p id="ac-badges" class="hint"></p>
+  <form id="ac-profile" class="row" novalidate>
+    <label class="field" for="ac-name"><span>Name shown to buyers</span><input type="text" id="ac-name" maxlength="60" autocomplete="name"></label>
+    <button type="submit" class="small">Save</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2 id="ac-form-h">Add a car</h2>
+  <p class="hint">A draft is private. Add photos, then send it for review.</p>
+  <form id="ac-car" class="ac-grid" novalidate>
+    <label class="field" for="c-make"><span>Make</span><input type="text" id="c-make" name="make" maxlength="40" required></label>
+    <label class="field" for="c-model"><span>Model</span><input type="text" id="c-model" name="model" maxlength="60" required></label>
+    <label class="field" for="c-trim"><span>Trim (optional)</span><input type="text" id="c-trim" name="trim" maxlength="60"></label>
+    <label class="field" for="c-year"><span>Year</span><input type="number" id="c-year" name="year" min="1950" max="2027" inputmode="numeric" required></label>
+    <label class="field" for="c-mileageKm"><span>Mileage (km)</span><input type="number" id="c-mileageKm" name="mileageKm" min="0" max="1500000" inputmode="numeric" required></label>
+    <label class="field" for="c-priceAed"><span>Price (AED)</span><input type="number" id="c-priceAed" name="priceAed" min="1000" max="20000000" inputmode="numeric" required></label>
+    <label class="field" for="c-emirate"><span>Emirate</span><select id="c-emirate" name="emirate" required><option value="dubai">Dubai</option><option value="abu_dhabi">Abu Dhabi</option><option value="sharjah">Sharjah</option><option value="ajman">Ajman</option><option value="umm_al_quwain">Umm Al Quwain</option><option value="ras_al_khaimah">Ras Al Khaimah</option><option value="fujairah">Fujairah</option></select></label>
+    <label class="field" for="c-fuel"><span>Fuel</span><select id="c-fuel" name="fuel" required><option value="petrol">Petrol</option><option value="diesel">Diesel</option><option value="hybrid">Hybrid</option><option value="plug_in_hybrid">Plug-in hybrid</option><option value="electric">Electric</option></select></label>
+    <label class="field" for="c-transmission"><span>Gearbox</span><select id="c-transmission" name="transmission" required><option value="automatic">Automatic</option><option value="manual">Manual</option></select></label>
+    <label class="field" for="c-condition"><span>Condition</span><select id="c-condition" name="condition" required><option value="used">Used</option><option value="new">New</option></select></label>
+    <label class="field" for="c-regionalSpecs"><span>Specs</span><select id="c-regionalSpecs" name="regionalSpecs"><option value="unknown">Not sure</option><option value="gcc">GCC</option><option value="american">American</option><option value="european">European</option><option value="japanese">Japanese</option><option value="korean">Korean</option><option value="other">Other</option></select></label>
+    <label class="field" for="c-seats"><span>Seats (optional)</span><input type="number" id="c-seats" name="seats" min="1" max="9" inputmode="numeric"></label>
+    <label class="field" for="c-color"><span>Colour (optional)</span><input type="text" id="c-color" name="color" maxlength="30"></label>
+    <label class="field" for="c-vin"><span>VIN / chassis number (optional — kept as a one-way fingerprint, never shown)</span><input type="text" id="c-vin" name="vin" maxlength="17" autocomplete="off" spellcheck="false"></label>
+    <label class="field" for="c-description"><span>Description (optional) — no phone numbers, e-mails or links; buyers contact you through the site</span><textarea id="c-description" name="description" maxlength="4000" rows="4"></textarea></label>
+    <p class="ac-actions"><button type="submit" id="c-save">Save as draft</button>
+    <button type="button" id="c-cancel" class="ghost small" hidden>Cancel</button></p>
+    <p id="c-status" class="error" role="alert"></p>
+  </form>
+</section>
+
+<section class="card">
+  <h2>My listings</h2>
+  <p class="hint">JPEG or WebP, at least 400×300, up to 3 MB. Remove location data before uploading.</p>
+  <div id="ac-mine" aria-live="polite"></div>
+</section>
+</div>
+</main>
+<footer class="foot">
+  <p class="foot-brand">Find Your UAE Property</p>
+  <p>Introduction service only — not a real-estate broker. No prices, availability or returns are promised. Always verify the advisor&#39;s licence.</p>
+  <p><a href="../workspace/">My decisions</a> · <a href="../about/">About &amp; how we work</a> · <a href="../trust/">Trust Center</a> · <a href="../privacy/">Privacy</a> · <a href="../tools/">Buyer calculators</a></p>
+</footer>
+<script type="application/json" id="t">{"lang":"en","listingsApi":"https://piqprvgzgczrvcjvjrcv.supabase.co/functions/v1/listings-api","here":"/account/","title":"Your account — sell your car","h1":"Your account","intro":"Sign in with your e-mail to list your car. Every listing is checked by a person before anyone can see it.","off":"Seller accounts are not open yet. You can still use the guides, calculators and comparisons.","loading":"Loading…","signIn":{"h":"Sign in or create an account","email":"E-mail","send":"Send me a code","sent":"We sent a code and a sign-in link to {email}. Enter the code, or open the link on this device.","code":"Code from the e-mail","verify":"Sign in","again":"Use another e-mail","note":"No password. We never ask for your bank details, card, Emirates ID or passwords here."},"signedInAs":"Signed in as {email}","signOut":"Sign out","profile":{"h":"Profile","name":"Name shown to buyers","save":"Save","saved":"Saved.","verified":{"email_verified":"E-mail verified","phone_verified":"Phone verified","identity_verified":"Identity verified","business_verified":"Business verified","licensed_partner":"Licensed partner"},"unverified":"E-mail not verified yet — open the link in your e-mail before you submit a listing."},"add":{"h":"Add a car","edit":"Edit listing","save":"Save as draft","update":"Save changes","cancel":"Cancel","draftNote":"A draft is private. Add photos, then send it for review."},"f":{"make":"Make","model":"Model","trim":"Trim (optional)","year":"Year","mileageKm":"Mileage (km)","priceAed":"Price (AED)","emirate":"Emirate","fuel":"Fuel","transmission":"Gearbox","condition":"Condition","regionalSpecs":"Specs","seats":"Seats (optional)","color":"Colour (optional)","vin":"VIN / chassis number (optional — kept as a one-way fingerprint, never shown)","description":"Description (optional) — no phone numbers, e-mails or links; buyers contact you through the site"},"opt":{"emirate":{"dubai":"Dubai","abu_dhabi":"Abu Dhabi","sharjah":"Sharjah","ajman":"Ajman","umm_al_quwain":"Umm Al Quwain","ras_al_khaimah":"Ras Al Khaimah","fujairah":"Fujairah"},"fuel":{"petrol":"Petrol","diesel":"Diesel","hybrid":"Hybrid","plug_in_hybrid":"Plug-in hybrid","electric":"Electric"},"transmission":{"automatic":"Automatic","manual":"Manual"},"condition":{"used":"Used","new":"New"},"regionalSpecs":{"unknown":"Not sure","gcc":"GCC","american":"American","european":"European","japanese":"Japanese","korean":"Korean","other":"Other"}},"mine":{"h":"My listings","empty":"No listings yet.","photos":"Photos: {n}","addPhoto":"Add photo","photoHint":"JPEG or WebP, at least 400×300, up to 3 MB. Remove location data before uploading.","submit":"Send for review","publicNo":"Not visible to the public"},"status":{"DRAFT":"Draft","PENDING_REVIEW":"Waiting for review","CHANGES_REQUESTED":"Changes requested","ACTIVE":"Published","REJECTED":"Rejected","PAUSED":"Paused","EXPIRED":"Expired","SOLD":"Sold","RENTED":"Rented","ARCHIVED":"Archived"},"action":{"edit":"Edit","withdraw":"Withdraw from review","pause":"Pause","resume":"Resume","sold":"Mark as sold","renew":"Renew","archive":"Archive"},"reasons":{"missing_information":"Some information is missing.","unsuitable_image":"A photo is not suitable.","duplicate":"This looks like a duplicate listing.","price_not_credible":"The price does not look credible.","contact_details_in_text":"Remove contact details from the text.","needs_proof":"We need proof before publishing.","regulatory_requirement_missing":"A legal requirement is missing.","prohibited_content":"The listing contains content that is not allowed.","suspected_fraud":"The listing could not be accepted."},"errors":{"invalid_email":"Please enter a valid e-mail.","invalid_code":"That code is wrong or expired.","too_many":"Too many attempts. Please wait a few minutes.","session_expired":"Your session ended. Please sign in again.","sign_in_required":"Please sign in.","invalid_fields":"Please check: {fields}","sensitive_data_not_allowed":"Remove bank, card or ID numbers from the text.","verify_your_account_first":"Verify your e-mail first (open the link we sent you).","add_at_least_one_photo":"Add at least one photo first.","too_many_listings_today":"You reached today's limit for new listings.","slow_down":"Too many requests. Please wait a little.","withdraw_from_review_to_edit":"Withdraw it from review before editing.","listing_closed":"This listing is closed.","account_suspended":"This account is suspended.","not_found":"Not found.","too_large":"The photo is larger than 3 MB.","unsupported_type":"Only JPEG or WebP photos.","metadata_not_allowed":"The photo contains location/camera data. Export it again without metadata.","too_small_dimensions":"The photo is too small (at least 400×300).","too_large_dimensions":"The photo is too large (at most 4000 pixels per side).","type_mismatch":"The file is not the photo type it claims to be.","corrupt":"The photo could not be read.","empty":"The file is empty.","listing_full":"This listing has the maximum number of photos.","rate_limited":"Too many uploads. Please wait an hour.","not_allowed":"Photos cannot be changed in this status.","marketplace_not_enabled":"Seller accounts are not open yet."},"fail":"Something went wrong. Please try again.","done":"Done."}</script>
+<script src="../account.js"></script>
+</body>
+</html>

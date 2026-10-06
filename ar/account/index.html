@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://piqprvgzgczrvcjvjrcv.supabase.co; font-src 'self'; connect-src https://piqprvgzgczrvcjvjrcv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" href="../../fonts/plex-arabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-arabic-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-arabic-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<title>حسابك — بِع سيارتك</title>
+<meta name="description" content="سجّل الدخول ببريدك الإلكتروني لتعرض سيارتك. يراجع شخصٌ كل إعلان قبل أن يراه أحد.">
+<link rel="canonical" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/account/">
+<link rel="alternate" hreflang="ar" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/account/">
+<link rel="alternate" hreflang="en" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<link rel="alternate" hreflang="x-default" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/account/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="حسابك — بِع سيارتك">
+<meta property="og:description" content="سجّل الدخول ببريدك الإلكتروني لتعرض سيارتك. يراجع شخصٌ كل إعلان قبل أن يراه أحد.">
+<meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/account/">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:image" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="أفق دبي وبرج خليفة عند الغروب">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#071a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../style.css">
+
+<meta name="robots" content="noindex">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../ar/">ابحث عن عقارك في الإمارات</a>
+  <nav class="top-nav">
+    <a href="../../ar/cars/">سيارات</a>
+    <a href="../../ar/tools/">الحاسبات</a>
+    <a href="../../ar/compare/">المقارنة</a>
+    <a href="../../ar/workspace/">قراراتي</a>
+  </nav>
+  <a class="lang" href="../../account/" hreflang="en" lang="en">English</a>
+</header>
+<main class="account">
+<section class="hero">
+  <h1>حسابك</h1>
+  <p class="lead">سجّل الدخول ببريدك الإلكتروني لتعرض سيارتك. يراجع شخصٌ كل إعلان قبل أن يراه أحد.</p>
+</section>
+<p id="ac-status" class="note" role="status" aria-live="polite">جارٍ التحميل…</p>
+
+<section id="ac-signin" class="card" hidden>
+  <h2>سجّل الدخول أو أنشئ حسابًا</h2>
+  <form id="ac-email-form" novalidate>
+    <label class="field" for="ac-email"><span>البريد الإلكتروني</span><input type="email" id="ac-email" autocomplete="email" inputmode="email" maxlength="254" required></label>
+    <button type="submit" id="ac-send">أرسل لي رمزًا</button>
+  </form>
+  <form id="ac-code-form" hidden novalidate>
+    <p id="ac-sent" class="hint"></p>
+    <label class="field" for="ac-code"><span>الرمز من البريد</span><input type="text" id="ac-code" autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]{6,10}" maxlength="10" required></label>
+    <button type="submit" id="ac-verify">دخول</button>
+    <button type="button" id="ac-again" class="ghost small">استخدم بريدًا آخر</button>
+  </form>
+  <p class="note">لا توجد كلمة مرور. لا نطلب هنا بياناتك البنكية أو بطاقتك أو هويتك أو كلمات المرور.</p>
+</section>
+
+<div id="ac-in" hidden>
+<section class="card">
+  <p><span id="ac-who"></span> · <button type="button" id="ac-out" class="ghost small">تسجيل الخروج</button></p>
+  <h2>الملف الشخصي</h2>
+  <p id="ac-badges" class="hint"></p>
+  <form id="ac-profile" class="row" novalidate>
+    <label class="field" for="ac-name"><span>الاسم الذي يراه المشترون</span><input type="text" id="ac-name" maxlength="60" autocomplete="name"></label>
+    <button type="submit" class="small">حفظ</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2 id="ac-form-h">أضف سيارة</h2>
+  <p class="hint">المسودة خاصة بك. أضف الصور ثم أرسلها للمراجعة.</p>
+  <form id="ac-car" class="ac-grid" novalidate>
+    <label class="field" for="c-make"><span>الشركة المصنّعة</span><input type="text" id="c-make" name="make" maxlength="40" required></label>
+    <label class="field" for="c-model"><span>الطراز</span><input type="text" id="c-model" name="model" maxlength="60" required></label>
+    <label class="field" for="c-trim"><span>الفئة (اختياري)</span><input type="text" id="c-trim" name="trim" maxlength="60"></label>
+    <label class="field" for="c-year"><span>سنة الصنع</span><input type="number" id="c-year" name="year" min="1950" max="2027" inputmode="numeric" required></label>
+    <label class="field" for="c-mileageKm"><span>المسافة المقطوعة (كم)</span><input type="number" id="c-mileageKm" name="mileageKm" min="0" max="1500000" inputmode="numeric" required></label>
+    <label class="field" for="c-priceAed"><span>السعر (درهم)</span><input type="number" id="c-priceAed" name="priceAed" min="1000" max="20000000" inputmode="numeric" required></label>
+    <label class="field" for="c-emirate"><span>الإمارة</span><select id="c-emirate" name="emirate" required><option value="dubai">دبي</option><option value="abu_dhabi">أبوظبي</option><option value="sharjah">الشارقة</option><option value="ajman">عجمان</option><option value="umm_al_quwain">أم القيوين</option><option value="ras_al_khaimah">رأس الخيمة</option><option value="fujairah">الفجيرة</option></select></label>
+    <label class="field" for="c-fuel"><span>الوقود</span><select id="c-fuel" name="fuel" required><option value="petrol">بنزين</option><option value="diesel">ديزل</option><option value="hybrid">هجين</option><option value="plug_in_hybrid">هجين قابل للشحن</option><option value="electric">كهربائي</option></select></label>
+    <label class="field" for="c-transmission"><span>ناقل الحركة</span><select id="c-transmission" name="transmission" required><option value="automatic">أوتوماتيك</option><option value="manual">عادي</option></select></label>
+    <label class="field" for="c-condition"><span>الحالة</span><select id="c-condition" name="condition" required><option value="used">مستعملة</option><option value="new">جديدة</option></select></label>
+    <label class="field" for="c-regionalSpecs"><span>المواصفات</span><select id="c-regionalSpecs" name="regionalSpecs"><option value="unknown">غير متأكد</option><option value="gcc">خليجية</option><option value="american">أمريكية</option><option value="european">أوروبية</option><option value="japanese">يابانية</option><option value="korean">كورية</option><option value="other">أخرى</option></select></label>
+    <label class="field" for="c-seats"><span>عدد المقاعد (اختياري)</span><input type="number" id="c-seats" name="seats" min="1" max="9" inputmode="numeric"></label>
+    <label class="field" for="c-color"><span>اللون (اختياري)</span><input type="text" id="c-color" name="color" maxlength="30"></label>
+    <label class="field" for="c-vin"><span>رقم الشاصي VIN (اختياري — يُحفظ كبصمة أحادية الاتجاه ولا يُعرض أبدًا)</span><input type="text" id="c-vin" name="vin" maxlength="17" autocomplete="off" spellcheck="false"></label>
+    <label class="field" for="c-description"><span>الوصف (اختياري) — بدون أرقام هواتف أو بريد أو روابط؛ يتواصل المشترون معك عبر الموقع</span><textarea id="c-description" name="description" maxlength="4000" rows="4"></textarea></label>
+    <p class="ac-actions"><button type="submit" id="c-save">حفظ كمسودة</button>
+    <button type="button" id="c-cancel" class="ghost small" hidden>إلغاء</button></p>
+    <p id="c-status" class="error" role="alert"></p>
+  </form>
+</section>
+
+<section class="card">
+  <h2>إعلاناتي</h2>
+  <p class="hint">JPEG أو WebP، لا تقل عن 400×300، وحتى 3 ميغابايت. احذف بيانات الموقع من الصورة قبل الرفع.</p>
+  <div id="ac-mine" aria-live="polite"></div>
+</section>
+</div>
+</main>
+<footer class="foot">
+  <p class="foot-brand">ابحث عن عقارك في الإمارات</p>
+  <p>خدمة تعريف فقط — لسنا وسيطًا عقاريًا. لا نعد بأسعار أو توفر أو عوائد. تحقّق دائمًا من ترخيص المستشار.</p>
+  <p><a href="../../ar/workspace/">قراراتي</a> · <a href="../../ar/about/">من نحن وكيف نعمل</a> · <a href="../../ar/trust/">مركز الثقة</a> · <a href="../../ar/privacy/">الخصوصية</a> · <a href="../../ar/tools/">حاسبات المشتري</a></p>
+</footer>
+<script type="application/json" id="t">{"lang":"ar","listingsApi":"https://piqprvgzgczrvcjvjrcv.supabase.co/functions/v1/listings-api","here":"/ar/account/","title":"حسابك — بِع سيارتك","h1":"حسابك","intro":"سجّل الدخول ببريدك الإلكتروني لتعرض سيارتك. يراجع شخصٌ كل إعلان قبل أن يراه أحد.","off":"حسابات البائعين غير مفتوحة بعد. يمكنك استخدام الأدلة والحاسبات والمقارنات.","loading":"جارٍ التحميل…","signIn":{"h":"سجّل الدخول أو أنشئ حسابًا","email":"البريد الإلكتروني","send":"أرسل لي رمزًا","sent":"أرسلنا رمزًا ورابط دخول إلى {email}. أدخل الرمز، أو افتح الرابط على هذا الجهاز.","code":"الرمز من البريد","verify":"دخول","again":"استخدم بريدًا آخر","note":"لا توجد كلمة مرور. لا نطلب هنا بياناتك البنكية أو بطاقتك أو هويتك أو كلمات المرور."},"signedInAs":"مسجّل باسم {email}","signOut":"تسجيل الخروج","profile":{"h":"الملف الشخصي","name":"الاسم الذي يراه المشترون","save":"حفظ","saved":"تم الحفظ.","verified":{"email_verified":"البريد موثّق","phone_verified":"الهاتف موثّق","identity_verified":"الهوية موثّقة","business_verified":"النشاط التجاري موثّق","licensed_partner":"شريك مرخّص"},"unverified":"البريد غير موثّق بعد — افتح الرابط في بريدك قبل إرسال أي إعلان."},"add":{"h":"أضف سيارة","edit":"تعديل الإعلان","save":"حفظ كمسودة","update":"حفظ التعديلات","cancel":"إلغاء","draftNote":"المسودة خاصة بك. أضف الصور ثم أرسلها للمراجعة."},"f":{"make":"الشركة المصنّعة","model":"الطراز","trim":"الفئة (اختياري)","year":"سنة الصنع","mileageKm":"المسافة المقطوعة (كم)","priceAed":"السعر (درهم)","emirate":"الإمارة","fuel":"الوقود","transmission":"ناقل الحركة","condition":"الحالة","regionalSpecs":"المواصفات","seats":"عدد المقاعد (اختياري)","color":"اللون (اختياري)","vin":"رقم الشاصي VIN (اختياري — يُحفظ كبصمة أحادية الاتجاه ولا يُعرض أبدًا)","description":"الوصف (اختياري) — بدون أرقام هواتف أو بريد أو روابط؛ يتواصل المشترون معك عبر الموقع"},"opt":{"emirate":{"dubai":"دبي","abu_dhabi":"أبوظبي","sharjah":"الشارقة","ajman":"عجمان","umm_al_quwain":"أم القيوين","ras_al_khaimah":"رأس الخيمة","fujairah":"الفجيرة"},"fuel":{"petrol":"بنزين","diesel":"ديزل","hybrid":"هجين","plug_in_hybrid":"هجين قابل للشحن","electric":"كهربائي"},"transmission":{"automatic":"أوتوماتيك","manual":"عادي"},"condition":{"used":"مستعملة","new":"جديدة"},"regionalSpecs":{"unknown":"غير متأكد","gcc":"خليجية","american":"أمريكية","european":"أوروبية","japanese":"يابانية","korean":"كورية","other":"أخرى"}},"mine":{"h":"إعلاناتي","empty":"لا توجد إعلانات بعد.","photos":"الصور: {n}","addPhoto":"أضف صورة","photoHint":"JPEG أو WebP، لا تقل عن 400×300، وحتى 3 ميغابايت. احذف بيانات الموقع من الصورة قبل الرفع.","submit":"أرسل للمراجعة","publicNo":"غير ظاهر للعامة"},"status":{"DRAFT":"مسودة","PENDING_REVIEW":"بانتظار المراجعة","CHANGES_REQUESTED":"مطلوب تعديلات","ACTIVE":"منشور","REJECTED":"مرفوض","PAUSED":"موقوف مؤقتًا","EXPIRED":"منتهي","SOLD":"مُباع","RENTED":"مؤجَّر","ARCHIVED":"مؤرشف"},"action":{"edit":"تعديل","withdraw":"سحب من المراجعة","pause":"إيقاف مؤقت","resume":"استئناف","sold":"تم البيع","renew":"تجديد","archive":"أرشفة"},"reasons":{"missing_information":"بعض المعلومات ناقصة.","unsuitable_image":"إحدى الصور غير مناسبة.","duplicate":"يبدو أن الإعلان مكرر.","price_not_credible":"السعر لا يبدو واقعيًا.","contact_details_in_text":"احذف بيانات التواصل من النص.","needs_proof":"نحتاج إثباتًا قبل النشر.","regulatory_requirement_missing":"ينقص متطلب قانوني.","prohibited_content":"الإعلان يحتوي على محتوى غير مسموح.","suspected_fraud":"تعذّر قبول الإعلان."},"errors":{"invalid_email":"أدخل بريدًا إلكترونيًا صحيحًا.","invalid_code":"الرمز غير صحيح أو منتهي.","too_many":"محاولات كثيرة. انتظر بضع دقائق.","session_expired":"انتهت جلستك. سجّل الدخول مرة أخرى.","sign_in_required":"سجّل الدخول أولًا.","invalid_fields":"راجع الحقول: {fields}","sensitive_data_not_allowed":"احذف أرقام الحسابات البنكية أو البطاقات أو الهوية من النص.","verify_your_account_first":"وثّق بريدك أولًا (افتح الرابط الذي أرسلناه).","add_at_least_one_photo":"أضف صورة واحدة على الأقل أولًا.","too_many_listings_today":"وصلت إلى الحد اليومي للإعلانات الجديدة.","slow_down":"طلبات كثيرة. انتظر قليلًا.","withdraw_from_review_to_edit":"اسحب الإعلان من المراجعة قبل التعديل.","listing_closed":"هذا الإعلان مغلق.","account_suspended":"هذا الحساب موقوف.","not_found":"غير موجود.","too_large":"حجم الصورة أكبر من 3 ميغابايت.","unsupported_type":"صور JPEG أو WebP فقط.","metadata_not_allowed":"الصورة تحتوي على بيانات الموقع أو الكاميرا. صدّرها مجددًا بدونها.","too_small_dimensions":"الصورة صغيرة جدًا (400×300 على الأقل).","too_large_dimensions":"الصورة كبيرة جدًا (4000 بكسل كحد أقصى لكل ضلع).","type_mismatch":"الملف ليس من نوع الصورة المعلن.","corrupt":"تعذّرت قراءة الصورة.","empty":"الملف فارغ.","listing_full":"وصل الإعلان إلى الحد الأقصى للصور.","rate_limited":"رفعات كثيرة. انتظر ساعة.","not_allowed":"لا يمكن تغيير الصور في هذه الحالة.","marketplace_not_enabled":"حسابات البائعين غير مفتوحة بعد."},"fail":"حدث خطأ. حاول مرة أخرى.","done":"تم."}</script>
+<script src="../../account.js"></script>
+</body>
+</html>
