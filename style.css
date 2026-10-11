@@ -2095,3 +2095,77 @@ h3 {
   opacity: 0;
   cursor: pointer;
 }
+
+/* Public car ads (/listings/, /listing/) */
+.ls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.ls-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.ls-card h2 {
+  font-size: 17px;
+  margin: 10px 0 4px;
+  overflow-wrap: anywhere;
+}
+.ls-cover,
+.ls-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--soft);
+}
+.ls-price {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 4px 0;
+}
+.ls-gallery {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 85%);
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 12px 0;
+}
+.ls-gallery img {
+  scroll-snap-align: start;
+}
+.ls-specs {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  margin: 8px 0;
+}
+.ls-specs dt {
+  color: var(--muted);
+}
+.ls-specs dd {
+  margin: 0;
+}
+.ls-desc {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.ls-safety {
+  font-size: 14px;
+  color: var(--muted);
+  padding-inline-start: 18px;
+}
+.listings details summary {
+  cursor: pointer;
+  color: var(--muted);
+  margin: 12px 0;
+}

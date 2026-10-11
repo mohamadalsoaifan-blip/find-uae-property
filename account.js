@@ -402,6 +402,11 @@
     var st = el("p", "ac-st ac-st-" + String(l.status).toLowerCase(), T.status[l.status] || l.status);
     c.appendChild(st);
     if (!l.publiclyVisible) c.appendChild(el("p", "hint", T.mine.publicNo));
+    else {
+      var pub = el("a", null, T.mine.viewPublic);
+      pub.href = T.publicAd + "?id=" + encodeURIComponent(l.id);
+      c.appendChild(el("p")).appendChild(pub);
+    }
     if (l.rejectReason) c.appendChild(el("p", "error", T.reasons[l.rejectReason] || l.rejectReason));
     if (l.moderatorNote) c.appendChild(el("p", "note", l.moderatorNote));
     var out = el("p", "hint");

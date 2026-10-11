@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://piqprvgzgczrvcjvjrcv.supabase.co; font-src 'self'; connect-src https://piqprvgzgczrvcjvjrcv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" href="../../fonts/plex-arabic-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-arabic-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../fonts/plex-arabic-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<title>سيارة للبيع</title>
+<meta name="description" content="إعلانات يكتبها البائعون أنفسهم. يراجع شخصٌ كل إعلان قبل ظهوره، ولا نحدد نحن الأسعار.">
+<link rel="canonical" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/listing/">
+<link rel="alternate" hreflang="ar" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/listing/">
+<link rel="alternate" hreflang="en" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/listing/">
+<link rel="alternate" hreflang="x-default" href="https://mohamadalsoaifan-blip.github.io/find-uae-property/listing/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="سيارة للبيع">
+<meta property="og:description" content="إعلانات يكتبها البائعون أنفسهم. يراجع شخصٌ كل إعلان قبل ظهوره، ولا نحدد نحن الأسعار.">
+<meta property="og:url" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/ar/listing/">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:image" content="https://mohamadalsoaifan-blip.github.io/find-uae-property/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="أفق دبي وبرج خليفة عند الغروب">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#071a33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b5cab'/%3E%3Cpath d='M8 23V14l8-6 8 6v9h-5v-6h-6v6z' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../style.css">
+
+<meta name="robots" content="noindex">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../ar/">ابحث عن عقارك في الإمارات</a>
+  <nav class="top-nav">
+    <a href="../../ar/cars/">سيارات</a>
+    <a href="../../ar/tools/">الحاسبات</a>
+    <a href="../../ar/compare/">المقارنة</a>
+    <a href="../../ar/workspace/">قراراتي</a>
+  </nav>
+  <a class="lang" href="../../listing/" hreflang="en" lang="en">English</a>
+</header>
+<main class="listings">
+<p><a id="ls-back" href="../../ar/listings/">← كل الإعلانات</a></p>
+<p id="ls-status" class="note" role="status" aria-live="polite">جارٍ التحميل…</p>
+<article id="ls-ad" class="card" hidden></article>
+<section id="ls-enquiry" class="card account" hidden>
+  <h2>اسأل البائع</h2>
+  <form id="e-form" novalidate>
+    <label class="field" for="e-name"><span>اسمك</span><input type="text" id="e-name" maxlength="80" autocomplete="name" required></label>
+    <label class="field" for="e-email"><span>البريد الإلكتروني</span><input type="email" id="e-email" maxlength="254" autocomplete="email" inputmode="email"></label>
+    <label class="field" for="e-phone"><span>الهاتف (اختياري إذا كتبت البريد)</span><input type="tel" id="e-phone" maxlength="20" autocomplete="tel" inputmode="tel"></label>
+    <label class="field" for="e-message"><span>رسالة (اختياري)</span><textarea id="e-message" maxlength="1000" rows="3"></textarea></label>
+    <label class="consent"><input type="checkbox" id="e-contact"><span>أوافق على التواصل معي بخصوص هذه السيارة.</span></label>
+    <label class="consent"><input type="checkbox" id="e-share"><span>أوافق على إرسال اسمي وبيانات تواصلي لهذا البائع.</span></label>
+    <p class="ac-actions"><button type="submit" id="e-send">إرسال</button></p>
+    <p id="e-status" role="status" aria-live="polite"></p>
+    <p class="note">لا نطلب أبدًا الهوية أو البيانات البنكية أو البطاقة.</p>
+  </form>
+</section>
+<section id="ls-report" class="account" hidden>
+  <details>
+    <summary>الإبلاغ عن الإعلان</summary>
+    <form id="r-form-ad" novalidate>
+      <h3>ما المشكلة في هذا الإعلان؟</h3>
+      <label class="field" for="rp-reason"><span>السبب</span><select id="rp-reason" name="-reason" required><option value="wrong_information">معلومات خاطئة</option><option value="possible_fraud">احتمال احتيال</option><option value="duplicate">إعلان مكرر</option><option value="already_sold">بِيعت بالفعل</option><option value="wrong_images">صور خاطئة</option><option value="misleading_price">سعر مضلل</option><option value="other">أخرى</option></select></label>
+      <label class="field" for="rp-note"><span>تفاصيل (اختياري)</span><textarea id="rp-note" maxlength="500" rows="2"></textarea></label>
+      <p class="ac-actions"><button type="submit" class="ghost small">إرسال البلاغ</button></p>
+      <p id="rp-status" role="status" aria-live="polite"></p>
+    </form>
+  </details>
+</section>
+</main>
+<footer class="foot">
+  <p class="foot-brand">ابحث عن عقارك في الإمارات</p>
+  <p>خدمة تعريف فقط — لسنا وسيطًا عقاريًا. لا نعد بأسعار أو توفر أو عوائد. تحقّق دائمًا من ترخيص المستشار.</p>
+  <p><a href="../../ar/workspace/">قراراتي</a> · <a href="../../ar/about/">من نحن وكيف نعمل</a> · <a href="../../ar/trust/">مركز الثقة</a> · <a href="../../ar/privacy/">الخصوصية</a> · <a href="../../ar/tools/">حاسبات المشتري</a></p>
+</footer>
+<script type="application/json" id="t">{"lang":"ar","mode":"detail","listingsApi":"https://piqprvgzgczrvcjvjrcv.supabase.co/functions/v1/listings-api","links":{"listing":"../../ar/listing/","search":"../../ar/listings/"},"opt":{"emirate":{"dubai":"دبي","abu_dhabi":"أبوظبي","sharjah":"الشارقة","ajman":"عجمان","umm_al_quwain":"أم القيوين","ras_al_khaimah":"رأس الخيمة","fujairah":"الفجيرة"},"fuel":{"petrol":"بنزين","diesel":"ديزل","hybrid":"هجين","plug_in_hybrid":"هجين قابل للشحن","electric":"كهربائي"},"transmission":{"automatic":"أوتوماتيك","manual":"عادي"},"condition":{"used":"مستعملة","new":"جديدة"},"regionalSpecs":{"unknown":"غير متأكد","gcc":"خليجية","american":"أمريكية","european":"أوروبية","japanese":"يابانية","korean":"كورية","other":"أخرى"}},"verified":{"email_verified":"البريد موثّق","phone_verified":"الهاتف موثّق","identity_verified":"الهوية موثّقة","business_verified":"النشاط التجاري موثّق","licensed_partner":"شريك مرخّص"},"searchTitle":"سيارات مستعملة وجديدة من البائعين في الإمارات","searchH1":"سيارات للبيع","searchIntro":"إعلانات يكتبها البائعون أنفسهم. يراجع شخصٌ كل إعلان قبل ظهوره، ولا نحدد نحن الأسعار.","listingTitle":"سيارة للبيع","closed":"إعلانات البائعين غير مفتوحة بعد. حتى ذلك الحين يساعدك دليل السيارات والحاسبات على القرار.","loading":"جارٍ التحميل…","empty":"لا توجد إعلانات مطابقة. جرّب تقليل الفلاتر.","notFound":"هذا الإعلان غير موجود أو لم يعد معروضًا.","filters":{"make":"الشركة المصنّعة","model":"الطراز","emirate":"الإمارة","any":"الكل","maxPrice":"أعلى سعر (درهم)","minYear":"من سنة","search":"بحث"},"card":{"km":"كم","view":"عرض"},"detail":{"sellerAd":"إعلان كتبه البائع","reviewed":"راجعه شخص قبل النشر","seller":"البائع","memberSince":"عضو منذ {date}","noVerification":"لا يوجد توثيق بعد","published":"نُشر {date}","updated":"حُدّث {date}","specs":"التفاصيل من البائع","noLongerAvailable":"هذه السيارة لم تعد متاحة.","back":"كل الإعلانات","safety":["عاين السيارة وأوراقها بنفسك قبل دفع أي مبلغ.","لا تدفع عربونًا لشخص لم تقابله، ولا تشارك بيانات بنكية أو بطاقة هنا.","افحص تاريخ السيارة وحالتها بنفسك؛ نحن لا نفحص السيارات."]},"spec":{"year":"سنة الصنع","mileageKm":"المسافة المقطوعة","fuel":"الوقود","transmission":"ناقل الحركة","condition":"الحالة","regionalSpecs":"المواصفات","seats":"المقاعد","color":"اللون","warranty":"الضمان","emirate":"الإمارة"},"account":{"individual":"بائع فرد","owner":"المالك","car_seller":"بائع فرد","broker":"وسيط","real_estate_company":"شركة","car_dealer":"معرض سيارات","partner":"شريك"},"enquiry":{"h":"اسأل البائع","name":"اسمك","email":"البريد الإلكتروني","phone":"الهاتف (اختياري إذا كتبت البريد)","message":"رسالة (اختياري)","contactConsent":"أوافق على التواصل معي بخصوص هذه السيارة.","shareWithSeller":"أوافق على إرسال اسمي وبيانات تواصلي لهذا البائع.","send":"إرسال","sent":"تم الإرسال. المرجع {ref}. سنتواصل معك، ولا نشارك شيئًا مع البائع إلا إذا اخترت المربع الثاني.","note":"لا نطلب أبدًا الهوية أو البيانات البنكية أو البطاقة."},"report":{"open":"الإبلاغ عن الإعلان","h":"ما المشكلة في هذا الإعلان؟","reason":"السبب","note":"تفاصيل (اختياري)","send":"إرسال البلاغ","sent":"شكرًا لك. سيراجعه شخص.","reasons":{"wrong_information":"معلومات خاطئة","possible_fraud":"احتمال احتيال","duplicate":"إعلان مكرر","already_sold":"بِيعت بالفعل","wrong_images":"صور خاطئة","misleading_price":"سعر مضلل","other":"أخرى"}},"errors":{"contact_consent_required":"اختر المربع الأول حتى نستطيع التواصل معك.","invalid_fields":"راجع الاسم والبريد أو الهاتف.","sensitive_data_not_allowed":"احذف أرقام الحسابات البنكية أو البطاقات أو الهوية من النص.","slow_down":"رسائل كثيرة. حاول لاحقًا.","own_listing":"هذا إعلانك أنت.","not_found":"هذا الإعلان لم يعد معروضًا.","marketplace_not_enabled":"إعلانات البائعين غير مفتوحة بعد."},"fail":"حدث خطأ. حاول مرة أخرى."}</script>
+<script src="../../listings.js"></script>
+</body>
+</html>
