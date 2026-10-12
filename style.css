@@ -2169,3 +2169,79 @@ h3 {
   color: var(--muted);
   margin: 12px 0;
 }
+.ls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0 16px;
+}
+.ls-bar .field {
+  flex: 1 1 200px;
+}
+#f-more summary {
+  cursor: pointer;
+  color: var(--accent);
+  margin: 14px 0 0;
+  font-weight: 600;
+}
+.ls-more {
+  text-align: center;
+}
+.ls-fit {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--accent);
+  margin: 6px 0 0;
+}
+.ls-fit-all {
+  color: var(--ok);
+}
+.ls-fit-none {
+  color: var(--muted);
+}
+.ls-checks {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.ls-checks li {
+  padding: 4px 0;
+}
+.ls-checks .ok {
+  color: var(--ok);
+}
+.ls-checks .no {
+  color: var(--error);
+}
+.ls-checks .unknown {
+  color: var(--muted);
+}
+.ls-drop {
+  color: var(--ok);
+  font-weight: 600;
+  margin: 0;
+}
+.ls-drop s {
+  color: var(--muted);
+  font-weight: 400;
+}
+.ls-pricepos {
+  border-inline-start: 4px solid var(--line);
+  padding: 4px 12px;
+  margin: 10px 0;
+}
+.ls-pricepos p {
+  margin: 2px 0;
+}
+.ls-pos-below {
+  border-color: var(--ok);
+}
+.ls-pos-above {
+  border-color: var(--gold);
+}
+.ls-monthly b {
+  font-size: 20px;
+}
