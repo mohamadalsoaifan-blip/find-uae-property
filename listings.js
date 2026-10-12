@@ -128,13 +128,16 @@
     if (chip) a.appendChild(chip);
     return a;
   }
+  var searchSeq = 0; // only the newest search may draw: a slower, older answer is dropped
   function search(more) {
+    var mine = more ? searchSeq : ++searchSeq;
     var q = query(more ? nextOffset : 0);
     if (!more) history.replaceState(null, "", location.pathname + (q.page ? "?" + q.page : ""));
     say(more ? "" : T.loading);
     var box = $("ls-results"), load = $("ls-load");
     load.disabled = true;
     get("/public/listings?" + q.api).then(function (x) {
+      if (mine !== searchSeq) return;
       load.disabled = false;
       if (!more) box.textContent = "";
       if (x.status !== 200 || !x.body.open) {
@@ -150,6 +153,7 @@
       nextOffset = x.body.nextOffset;
       load.hidden = nextOffset == null;
     }, function () {
+      if (mine !== searchSeq) return;
       load.disabled = false;
       say(T.fail);
     });
