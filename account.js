@@ -219,6 +219,32 @@
       $("ac-badges").textContent = badges.length ? "✓ " + badges.join(" · ") : "";
       if ((x.body.verification || []).indexOf("email_verified") < 0) $("ac-badges").textContent = T.profile.unverified;
       loadMine();
+      loadSaved();
+    });
+  }
+  function loadSaved() {
+    var box = $("ac-saved"), S = T.savedCopy;
+    call("GET", "/saved").then(function (x) {
+      if (x.status !== 200) return;
+      box.textContent = "";
+      var list = x.body.saved || [];
+      if (!list.length) box.appendChild(el("p", "hint", S.empty));
+      list.forEach(function (r) {
+        var row = el("p", "ac-saved-row");
+        if (r.available) {
+          var a = el("a", null, r.title);
+          a.href = T.publicAd + "?id=" + encodeURIComponent(r.id);
+          row.appendChild(a);
+        } else row.appendChild(el("span", "hint", r.title + " — " + S.unavailable));
+        row.appendChild(document.createTextNode(" · " + (T.lang === "ar" ? "درهم " : "AED ") + nf.format(r.priceAed) + " "));
+        var rm = el("button", "ghost small", S.remove);
+        rm.type = "button";
+        rm.addEventListener("click", function () {
+          call("DELETE", "/saved/" + r.id).then(loadSaved);
+        });
+        row.appendChild(rm);
+        box.appendChild(row);
+      });
     });
   }
   $("ac-profile").addEventListener("submit", function (e) {

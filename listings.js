@@ -233,11 +233,23 @@
         T.detail.published.replace("{date}", day(l.publishedAt)) + " · " +
           T.detail.updated.replace("{date}", day(l.lastUpdated)),
       ));
-      var tips = el("ul", "ls-safety");
-      T.detail.safety.forEach(function (s) {
-        tips.appendChild(el("li", null, s));
-      });
-      ad.appendChild(tips);
+      if (F && F.checklist) {
+        var chk = el("section", "ls-check");
+        chk.appendChild(el("h2", null, T.check.h));
+        chk.appendChild(el("p", "hint", T.check.intro));
+        var ol = el("ol");
+        F.checklist({
+          year: car.year,
+          mileageKm: car.mileageKm,
+          condition: car.condition,
+          fuel: car.fuel,
+          regionalSpecs: car.regionalSpecs,
+        }, new Date().getFullYear()).forEach(function (k) {
+          if (T.check.items[k]) ol.appendChild(el("li", null, T.check.items[k]));
+        });
+        chk.appendChild(ol);
+        ad.appendChild(chk);
+      }
       if (l.available) {
         var cmp = el("p", "ac-actions");
         var addBtn = el("button", "ghost small", T.compare.add);
@@ -257,6 +269,7 @@
           cmpOut.appendChild(go);
         });
         cmp.appendChild(addBtn);
+        cmp.insertBefore(saveButton(l.id), addBtn);
         cmp.appendChild(cmpOut);
         ad.appendChild(cmp);
         showFit({ priceAed: l.priceAed, emirate: l.emirate, condition: car.condition, fuel: car.fuel, seats: car.seats });
@@ -273,6 +286,57 @@
     }, function () {
       say(T.fail);
     });
+  }
+
+  // ------------------------------------------------------------------ save (needs the account sign-in on this device)
+  function token() {
+    try {
+      var a = JSON.parse(readLS("plh_auth") || "null");
+      return a && typeof a.a === "string" && a.e - 60 > Date.now() / 1000 ? a.a : null;
+    } catch (_) {
+      return null;
+    }
+  }
+  function authed(method, path) {
+    return fetch(API + path, { method: method, headers: { authorization: "Bearer " + token() } }).then(function (res) {
+      return res.json().catch(function () {
+        return {};
+      }).then(function (j) {
+        return { status: res.status, body: j };
+      });
+    });
+  }
+  function saveButton(id) {
+    if (!token()) {
+      var a = el("a", "ghost small cta secondary", T.save.signIn);
+      a.href = T.links.account;
+      return a;
+    }
+    var b = el("button", "ghost small", T.save.save);
+    b.type = "button";
+    var on = false;
+    function show() {
+      b.textContent = on ? T.save.saved : T.save.save;
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    authed("GET", "/saved").then(function (x) {
+      on = x.status === 200 && (x.body.saved || []).some(function (r) {
+        return r.id === id;
+      });
+      show();
+    }, function () {});
+    b.addEventListener("click", function () {
+      b.disabled = true;
+      authed(on ? "DELETE" : "PUT", "/saved/" + id).then(function (x) {
+        b.disabled = false;
+        if (x.status === 200) on = !on;
+        show();
+      }, function () {
+        b.disabled = false;
+      });
+    });
+    show();
+    return b;
   }
 
   function showFit(ad) {

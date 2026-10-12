@@ -97,5 +97,24 @@
     return true;
   }
 
-  root.PLHListingFit = { fit: fit, savedNeeds: savedNeeds, addToCompare: addToCompare };
+  /**
+   * What to check before paying, chosen from facts in the ad only (age, mileage, condition, engine, specs). Keys;
+   * the page shows the sentence for each. Generic good practice — never a statement about this particular car.
+   * @param {{year?:number|null, mileageKm?:number|null, condition?:string|null, fuel?:string|null, regionalSpecs?:string|null}} ad
+   * @param {number} thisYear
+   */
+  function checklist(ad, thisYear) {
+    var out = ["papers", "service_history", "accident_history", "inspection", "test_drive", "finance_clearance"];
+    var age = typeof ad.year === "number" ? thisYear - ad.year : null;
+    var km = typeof ad.mileageKm === "number" ? ad.mileageKm : null;
+    if (ad.condition === "new") out.push("warranty_start");
+    else if ((age !== null && age >= 5) || (km !== null && km >= 100000)) out.push("wear_items");
+    if (km !== null && km >= 150000) out.push("major_service");
+    if (ad.fuel === "electric" || ad.fuel === "hybrid" || ad.fuel === "plug_in_hybrid") out.push("battery_health");
+    if (ad.regionalSpecs && ad.regionalSpecs !== "gcc" && ad.regionalSpecs !== "unknown") out.push("non_gcc");
+    out.push("pay_safely", "transfer");
+    return out;
+  }
+
+  root.PLHListingFit = { fit: fit, savedNeeds: savedNeeds, addToCompare: addToCompare, checklist: checklist };
 })(typeof globalThis !== "undefined" ? globalThis : window);

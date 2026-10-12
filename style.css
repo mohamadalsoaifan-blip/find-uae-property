@@ -2245,3 +2245,17 @@ h3 {
 .ls-monthly b {
   font-size: 20px;
 }
+.ls-check ol {
+  padding-inline-start: 30px;
+  margin: 8px 0 0;
+}
+.ls-check li {
+  margin: 6px 0;
+}
+.ac-saved-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
